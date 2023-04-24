@@ -1,5 +1,5 @@
 const process = require('dotenv').config();
-const { Sequelize, BelongsToMany } = require('sequelize');
+const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
