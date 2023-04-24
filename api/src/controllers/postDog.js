@@ -4,7 +4,7 @@ const postDog = async (req, res) => {
     try {
         const { id, name, image, height, weight, age, temperaments } = req.body // recibimos por body los datos que nos envian desde el front
 
-        if (!name || !image || !height || !weight || !age || !id) {
+        if (!name || !height || !weight || !age || !id) {
             res.status(404).json({ error: "No se han ingresado todos los datos" })
         }
 
@@ -13,7 +13,7 @@ const postDog = async (req, res) => {
             defaults: {
                 id,
                 name,
-                image,
+                image:image?image:null,
                 height,
                 weight,
                 age,
