@@ -19,9 +19,9 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const apiForDatabase = require("./src/controllers/apiForDatabase.js")
+const tempsForDatabase = require("./src/controllers/tempsForDatabase.js")
 
-apiForDatabase()
+tempsForDatabase()
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {

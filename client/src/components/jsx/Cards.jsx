@@ -1,14 +1,17 @@
 import React from 'react'
 import Card from './Card'
+import "../css/Cards.css"
 
 export default function Cards({ dogs }) {
     return (
-        <div>
+        <div className='cardGrid'>
             {dogs.map((d) => {
-                const { id, name, age, height, weight, image } = d
+                const { id, name, age, height, weight, image, temperaments } = d
                 return (<Card key={id}
+                    id={id}
                     name={name}
                     age={age}
+                    temperaments={temperaments}
                     height={height}
                     weight={weight}
                     image={image}
