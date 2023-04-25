@@ -2,31 +2,32 @@ const { Dog, Temperaments } = require("../db")
 
 const postDog = async (req, res) => {
     try {
-        const { id, name, image, height, weight, age, temperaments } = req.body // recibimos por body los datos que nos envian desde el front
+        const { name, image, height, weight, age, temperaments } = req.body // recibimos por body los datos que nos envian desde el front
+        const id = await Dog.findAll()
 
-        if (!name || !height || !weight || !age || !id) {
+        if (!name || !height || !weight || !age) {
             res.status(404).json({ error: "No se han ingresado todos los datos" })
         }
 
         const [dog, created] = await Dog.findOrCreate({ // creamos al perro
-            where: { id: id },
+            where: { name },
             defaults: {
-                id,
+                id: id.length + 1,
                 name,
-                image:image?image:null,
+                image: image ? image : null,
                 height,
                 weight,
                 age,
             },
         });
 
-        if (!created) {  // si el id ya existe..
-            res.status(401).json({ error: "El Id ya esta en uso" });
+        if (!created) {  // si el perro ya existe..
+            res.status(401).json({ error: "El perro ya existe" });
         } else {
             if (temperaments) {
                 temperaments.forEach(async (t) => {              // Relacionamos con la tabla intermedia
-                    const temp = await Temperaments.findOne({where:{name: t}})
-                    const dog = await Dog.findByPk(id) 
+                    const temp = await Temperaments.findOne({ where: { name: t } })
+                    const dog = await Dog.findByPk(id.length + 1)
                     await dog.addTemperaments(temp)
                 });
             }
