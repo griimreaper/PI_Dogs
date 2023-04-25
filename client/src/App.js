@@ -22,10 +22,20 @@ function App() {
       })
   }, [])
 
-  console.log(dogs)
+  
+  async function onSearch(name) {
+    try {
+        const { data } = await axios.get(`http://localhost:3001/dogsname?name=${name}`)
+        setDogs([data])
+    } catch (error) {
+        console.log(error)
+        alert(error)
+    }
+}
+
   return (
     <div className="App">
-      {location.pathname !== "/" && <Nav />}
+      {location.pathname !== "/" && <Nav onSearch={onSearch}/>}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Cards dogs={dogs}/>} />

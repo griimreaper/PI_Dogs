@@ -11,13 +11,16 @@ async function getDogs(req, res) {
             return {
                 id: dog.id,
                 name: dog.name,
-                image: dog.image.url
+                image: dog.image.url,
+                weight: dog.weight.imperial,
+                height: dog.height.imperial,
+                age: dog.life_span
             }
         })
         const dogsDB = await Dog.findAll({  //extraemos los perros de nuesta DB
-            attributes: ["id", "name", "image"]
+            attributes: ["id", "name", "image", "weight", "height", "age"]
         })
-        res.status(200).json([...dogsAPI, ...dogsDB].sort((a,b) => a.id - b.id)) // concatenamos los resultados y lo ordenamos por id
+        res.status(200).json([...dogsAPI, ...dogsDB].sort((a, b) => a.id - b.id)) // concatenamos los resultados y lo ordenamos por id
     } catch (error) {
         res.status(500).json({ error: error.message })
     }

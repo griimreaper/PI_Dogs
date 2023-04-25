@@ -1,0 +1,15 @@
+.landingContainer img{
+ width: 300px;
+ background-color: rgba(189, 40, 40, 0) ;
+
+}
+.landingContainer img:hover{
+ width: 350px;
+}
+
+body{
+    background-image: url(https://i.pinimg.com/originals/84/9a/bf/849abf4060d509b0ef69bc55b3e41d64.jpg);
+    background-size: 100%;
+    background-position: 0%;
+    background-repeat: no-repeat;
+}

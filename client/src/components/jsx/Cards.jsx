@@ -1,8 +1,11 @@
 import React from 'react'
 import Card from './Card'
 import "../css/Cards.css"
+import Paginate from './Paginate'
+import { useSelector } from 'react-redux'
 
 export default function Cards({ dogs }) {
+
     return (
         <div className='cardGrid'>
             {dogs.map((d) => {
@@ -17,6 +20,7 @@ export default function Cards({ dogs }) {
                     image={image}
                 />)
             })}
+
         </div>
     )
 }

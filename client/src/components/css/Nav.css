@@ -1,3 +1,34 @@
-.container{
-    color: black;
+.navContainer {
+    background-color: rgba(255, 255, 255, 0.744);
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+    height: 60px;
+    padding: 5px;
+    box-shadow: 0px 0px 3px red;
+    position:relative
+}
+
+.navContainer button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+}
+
+.navContainer button:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+.navContainer button:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
 }

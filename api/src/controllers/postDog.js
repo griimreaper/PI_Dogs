@@ -5,7 +5,7 @@ require("dotenv").config()
 const { ENDPOINT } = process.env //extramos la api de .env
 
 let id = 1
-let idEnUso 
+let idEnUso
 
 const postDog = async (req, res) => {
     try {
@@ -49,7 +49,7 @@ const postDog = async (req, res) => {
                 });
             }
 
-            res.status(200).json(dog)
+            res.status(200).json({ message: "Dog created successfully"})
         }
     } catch (error) {
         res.status(500).json({ error: error.message })
