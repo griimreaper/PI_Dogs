@@ -13,25 +13,59 @@
 .cardContainer h2 {
     color: rgb(255, 255, 255);
     background-color: rgba(255, 0, 0, 0.553);
-    width: min-content;
+    width: 70%;
+    font-size: 1.0rem;
+    white-space: wrap;
+    text-overflow:clip;
+    overflow:hidden;
     border-radius: 0px 10px 10px 0px;
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 2;
+}
+.cardContainer p {
+    color: rgb(255, 255, 255);
+    width: 40%;
+    background-color: rgba(226, 43, 43, 0.398);
+    font-size: 0.8rem;
+    white-space: wrap;
+    text-overflow:clip;
+    overflow:hidden;
+    border-radius: 10px 0px 0px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
     z-index: 1;
+}
+.cardContainer li {
+    display: flex;
+    color: rgb(252, 252, 252);
+    width: 40%;
+    flex-direction: column;
+    justify-content: first baseline;
+    left: -50px;
+    white-space: nowrap;
+    text-align:left;
+    font-size: 0.6rem;
+    position:relative;
+    margin: 5px;
+    z-index: 1;
+    text-decoration:underline transparent;
+    transition: transform 2.5s;
 }
 
 .cardContainer {
     box-sizing: border-box;
-    width: 190px;
-    height: 254px;
+    width: 180px;
+    height: 234px;
     background: rgba(169, 169, 169, 0.915);
     border: 3px solid white;
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(6px);
     border-radius: 17px;
     text-align: center;
-    margin: 2%;
+    margin: 1.5%;
     cursor: pointer;
     transition: all 0.5s;
     display: flex;
@@ -45,7 +79,19 @@
 .cardContainer:hover {
     border: 3px solid black;
     transform: scale(1.05);
-    box-shadow: 0px 0px 3px red;
+    box-shadow: 0px 0px 2px rgb(193, 0, 0);
+    
+}
+.cardContainer:hover li{
+display: none;
+}
+.cardContainer:hover h2{
+color: black;
+
+}
+.cardContainer:hover p{
+color: black;
+
 }
 
 .cardContainer:active {

@@ -2,5 +2,43 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    background-color:antiquewhite;
+    border: 2px solid rgba(0, 0, 0, 0);
+    margin: 1%;
+    padding: 20px;
+    border-radius: 70px;
+    background-color: rgba(0, 0, 0, 0.513);
+}
+
+.homeContainer {
+    background-color: rgba(250, 235, 215, 0.507);
+    display: flex;
+    direction: row;
+    justify-content: center;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.homeContainer svg {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 56, 86);
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    display: flex;
+    width: 6rem;
+    background-color: rgb(236, 46, 46);
+    border-radius: 100%;
+    margin: auto
+}
+
+.homeContainer svg:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+.homeContainer svg:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
 }
