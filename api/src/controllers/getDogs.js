@@ -27,12 +27,17 @@ async function getDogs(req, res) {
                 }]
             }
         )
-        
+        const newDogs = []
+        for (const dog of dogsDB) {
+            const { id, name, weight, height, image, age, temperaments } = dog
+            newDogs.push({ id, name, weight, height, image, age, temperaments: temperaments.map(t => t.name) })
+        }
 
-    res.status(200).json([...dogsAPI, ...dogsDB].sort((a, b) => a.id - b.id)) // concatenamos los resultados y lo ordenamos por id
-} catch (error) {
-    res.status(500).json({ error: error.message })
-}
+
+        res.status(200).json([...dogsAPI, ...newDogs].sort((a, b) => a.id - b.id)) // concatenamos los resultados y lo ordenamos por id
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
 }
 
 module.exports = getDogs

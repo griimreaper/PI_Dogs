@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import "../css/Form.css"
 
 export default function Form() {
-    const [dogData, setDogData] = useState({ 
+    const [dogData, setDogData] = useState({
         name: "",
         image: "",
         height: "",
@@ -31,7 +32,7 @@ export default function Form() {
     const handleCheckboxChange = (e) => {
         const selectedTemperament = e.target.value;
         const isChecked = e.target.checked;
-    
+
         let updatedTemperaments = [...selectedTemperaments];
         if (isChecked) {
             updatedTemperaments.push(selectedTemperament);
@@ -40,7 +41,7 @@ export default function Form() {
                 (t) => t !== selectedTemperament
             );
         }
-    
+
         setSelectedTemperaments(updatedTemperaments);
         setDogData({
             ...dogData,
@@ -48,46 +49,61 @@ export default function Form() {
         });
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            const {data} = await axios.post("http://localhost:3001/dogs", dogData)
-            console.log(data)
+            const { data } = await axios.post("http://localhost:3001/dogs", dogData)
             alert(data.message)
-        } catch (error) {
-            console.log(error.response.data)
-            alert("The Dog does exist")
+        } catch ({response}) {
+            alert(response.data.error)
         }
     }
 
-
-    console.log(dogData)
     return (
-        <div>
+        <div class='formContainer'>
             <h1>Create a new breed</h1>
-            <img src="https://webstockreview.net/images/clipart-clock-dog-2.png" alt="dogImage" />
-            <label>Name: </label>
-            <input value={dogData.name} name="name" onChange={handleChange}></input>
-            <label>image URL: </label>
-            <input value={dogData.image} name="image" onChange={handleChange}></input>
-            <label>Height: </label>
-            <input value={dogData.height} name="height" onChange={handleChange} />
-            <label>Weight: </label>
-            <input value={dogData.weight} name="weight" onChange={handleChange} />
-            <label>life span: </label>
-            <input value={dogData.age} name="age" onChange={handleChange} />
-            <div>
-            <h3>Temperaments:</h3>
-                {temperament.map((t) => {
-                    return (
-                        <div key={t.id}>
-                        <input type="checkbox" id={t.id} name={t.name} value={t.name} onChange={handleCheckboxChange}/>
-                        <label htmlFor={t.id}>{t.name}</label>
-                    </div>
-                        )
-                    })}
+            <div class='formContent'>
+                <div class='imageContainer'>
+                    <img src="https://webstockreview.net/images/clipart-clock-dog-2.png" alt="dogImage" />
+                </div>
+                <div class='formFields'>
+                    <form>
+                        <a class="create">Create</a>
+                        <div class="inputBox">
+                            <span>Name</span>
+                            <input value={dogData.name} name="name" onChange={handleChange}></input>
+                        </div>
+                        <div class="inputBox">
+                            <span>image URL</span>
+                            <input value={dogData.image} name="image" onChange={handleChange}></input>
+                        </div>
+                        <div class="inputBox">
+                            <span>Height</span>
+                            <input value={dogData.height} name="height" onChange={handleChange} />
+                        </div>
+                        <div class="inputBox">
+                            <span>Weight</span>
+                            <input value={dogData.weight} name="weight" onChange={handleChange} />
+                        </div>
+                        <div class="inputBox">
+                            <span>life span</span>
+                            <input value={dogData.age} name="age" onChange={handleChange} />
+                        </div>
+                        <h3>Temperaments</h3>
+                        <div class='temperamentContainer'>
+                            {temperament.map((t) => {
+                                return (
+                                    <div class="temperament" key={t.id}>
+                                        <input type="checkbox" id={t.id} name={t.name} value={t.name} onChange={handleCheckboxChange} />
+                                        <span htmlFor={t.id}>{t.name}</span>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <button class="submit" onClick={handleSubmit}>Submit</button>
+                    </form>
+                </div>
             </div>
-                    <button onClick={handleSubmit}>Submit</button>
         </div>
     )
 }

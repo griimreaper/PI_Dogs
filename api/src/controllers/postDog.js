@@ -23,7 +23,7 @@ const postDog = async (req, res) => {
         idEnUso = [...idEnUso, id].sort((a, b) => a - b) //al encontrar el id lo guardamos en nuestro array idEnUso, paara que cuando creemos el proximo perro busque el nuevo id desde ese array
 
         if (!name || !height || !weight || !age) {
-            res.status(404).json({ error: "No se han ingresado todos los datos" })
+            return res.status(400).json({ error: "No se han ingresado todos los datos" })
         }
 
         const [dog, created] = await Dog.findOrCreate({ // creamos al perro

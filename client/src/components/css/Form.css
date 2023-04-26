@@ -1,0 +1,123 @@
+.create {
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: -10px;
+    margin-bottom: 10px;
+    background-color: rgba(250, 235, 215, 0.694);
+}
+
+.formContainer h1 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 4px;
+    text-shadow: 0px 0px 5px rgb(239, 239, 239);
+}
+
+.formContent {
+    display: flex;
+    width: 90%;
+    border: 3px solid black;
+    border-radius: 100px;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    padding: 40px;
+    background-color: rgb(255, 240, 240);
+    border-radius: 100px 0px 0px 100px;
+}
+
+.imageContainer img {
+    width: 100%;
+    margin: auto;
+    height: auto;
+}
+
+.formFields {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 2%;
+    background-color: rgb(255, 240, 251);
+    border-radius: 0px 100px 100px 0px;
+}
+
+.temperamentContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0 0 50px 0;
+    background-color: rgba(255, 180, 180, 0.745);
+    width: 100%;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.temperament {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 25%;
+    white-space: nowrap;
+}
+
+.temperament span {
+    font-size: 0.8rem;
+}
+
+.temperamentContainer div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.temperamentContainer label {
+    margin-left: 5px;
+}
+
+.inputBox {
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-between;
+    width: 50%;
+}
+.inputBox span{
+font-size: 18px;
+}
+
+.submit {
+    padding: 7px 14px;
+    border-radius: 10px;
+    border: 0;
+    margin-top: 10px;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 5px 0px 0px;
+    color: hsl(0, 0%, 100%);
+}
+
+.submit:hover {
+    box-shadow: rgb(201, 46, 70) 0px 2px 0px 0px;
+}
+
+.submit:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}

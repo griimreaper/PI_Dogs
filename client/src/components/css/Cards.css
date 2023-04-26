@@ -2,11 +2,12 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    border: 2px solid rgba(0, 0, 0, 0);
-    margin: 1%;
-    padding: 20px;
+    border:none;
+    margin: 0.6% 0.8% 0.6% 0.8%;
+    padding: 14px;
     border-radius: 70px;
     background-color: rgba(0, 0, 0, 0.513);
+    min-width:80%;
 }
 
 .homeContainer {
@@ -16,9 +17,10 @@
     justify-content: center;
     margin-left: 2px;
     margin-right: 2px;
+    padding-bottom: 0.3%;
 }
 
-.homeContainer svg {
+.homeContainer .buttonEnabled {
     padding: 10px;
     border-radius: 10px;
     background-color: rgb(255, 56, 86);
@@ -26,19 +28,34 @@
     transition: all .3s ease;
     box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
     display: flex;
-    width: 6rem;
+    width: 10%;
     background-color: rgb(236, 46, 46);
     border-radius: 100%;
     margin: auto
 }
 
-.homeContainer svg:hover {
+.homeContainer .buttonEnabled:hover {
     box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
 }
 
-.homeContainer svg:active {
+.homeContainer .buttonEnabled:active {
     background-color: rgb(255, 56, 86);
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(5px);
     transition: 200ms;
+}
+
+.homeContainer .buttonDisabled {
+    background-color: rgb(97, 97, 97);
+    box-shadow: rgb(1, 0, 0) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+    padding: 10px;
+    border-radius: 100%;
+    display: flex;
+    width: 10%;
+    margin: auto
+}
+.link {
+    text-decoration: none ;
 }
