@@ -4,6 +4,7 @@ export const ADD_DOGS = "ADD_DOGS"
 export const HANDLE_NUMBER = "HANDLE_NUMBER"
 export const RESET_DOGS = "RESET_DOGS"
 
+
 export const nextPage = () => {
     return {
         type: NEXT_PAGE,
@@ -28,7 +29,7 @@ export const addDogs = (dogs) => {
 }
 export const resetDogs = () => {
     return {
-        type:RESET_DOGS,
+        type: RESET_DOGS,
     }
 }
 

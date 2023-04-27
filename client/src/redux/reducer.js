@@ -1,4 +1,4 @@
-import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER,RESET_DOGS } from "./actions";
+import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS } from "./actions";
 
 const initialState = {
     numPage: 1,

@@ -11,7 +11,9 @@ export default function Card(props) {
                 <img src={image} alt={name} />
                 <h2>{name}</h2>
                 <p>W: {weight}</p>
+                <div className='tempCont'>
                 {temperaments && temperaments.map(t => (<li>{t}</li>))}
+                </div>
             </Link>
         </div>
     )

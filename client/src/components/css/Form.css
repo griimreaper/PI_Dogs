@@ -16,7 +16,6 @@
     margin-bottom: 10px;
     background-color: rgba(250, 235, 215, 0.694);
 }
-
 .formContainer h1 {
     font-family: 'Cinzel', serif;
     letter-spacing: 4px;
@@ -26,8 +25,8 @@
 .formContent {
     display: flex;
     width: 90%;
-    border: 3px solid black;
     border-radius: 100px;
+    margin-bottom: 50px;
 }
 
 .imageContainer {
@@ -35,7 +34,7 @@
     justify-content: center;
     width: 40%;
     padding: 40px;
-    background-color: rgb(255, 240, 240);
+    background-color: rgba(0, 0, 0, 0.513);
     border-radius: 100px 0px 0px 100px;
 }
 
@@ -48,9 +47,10 @@
 .formFields {
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 50%;
+    height: 37rem;
     padding: 2%;
-    background-color: rgb(255, 240, 251);
+    background-color: rgba(0, 0, 0, 0.513);
     border-radius: 0px 100px 100px 0px;
 }
 
@@ -58,9 +58,10 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 0 0 50px 0;
-    background-color: rgba(255, 180, 180, 0.745);
+    background-color: rgba(0, 0, 0, 0.402);
     width: 100%;
-    max-height: 300px;
+    color: white;
+    max-height: 250px;
     overflow: scroll;
 }
 
@@ -84,24 +85,46 @@
 
 .temperamentContainer label {
     margin-left: 5px;
+    
 }
 
 .inputBox {
+    display: flex;
     margin: auto;
     margin-top: 10px;
-    display: flex;
-    justify-content:space-between;
-    width: 50%;
+    width: 90%;
+    height: 6%;
+    border-radius: 25px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.556);
 }
 .inputBox span{
-font-size: 18px;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+}
+.inputBox input{
+    margin: 5px 40% 5px 12%;
+    width: 12%;
+    white-space: nowrap;
+    position: absolute;
+}
+.inputBox p {
+    color: rgb(198, 0, 0);
+    font-size: 0.8rem;
+    position:absolute;
+    right: 8%;
+    width: 200px;
+    white-space: wrap;
+    margin: auto;
 }
 
 .submit {
-    padding: 7px 14px;
+    padding: 9px 18px;
     border-radius: 10px;
     border: 0;
-    margin-top: 10px;
+    margin-top: 30px;
     background-color: rgb(255, 56, 86);
     letter-spacing: 1px;
     font-size: 10px;
