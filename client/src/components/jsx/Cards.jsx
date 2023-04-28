@@ -21,7 +21,7 @@ export default function Cards() {
     function prev() {
         dispatch(prevPage())
     }
-
+console.log(dogs.filter((d) => !d.hasOwnProperty("created")))
     return (
         <div className='homeContainer'>
             <svg className={numPage > 1 ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage > 1 ? prev : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">

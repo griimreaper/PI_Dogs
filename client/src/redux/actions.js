@@ -3,6 +3,9 @@ export const PREV_PAGE = "PREV_PAGE"
 export const ADD_DOGS = "ADD_DOGS"
 export const HANDLE_NUMBER = "HANDLE_NUMBER"
 export const RESET_DOGS = "RESET_DOGS"
+export const ORDER_ALPHABETHYCALLY = "ORDER_ALPHABETYCALLY"
+export const ORDER_WEIGHT = "ORDER_WEIGHT"
+export const FILTER_CREATED = "FILTER_CREATED"
 
 
 export const nextPage = () => {
@@ -32,4 +35,21 @@ export const resetDogs = () => {
         type: RESET_DOGS,
     }
 }
-
+export const orderAlphabethycally = (order) => {
+    return {
+        type: ORDER_ALPHABETHYCALLY,
+        payload: order
+    }
+}
+export const orderWeight = (order) => {
+    return {
+        type: ORDER_WEIGHT,
+        payload: order
+    }
+}
+export const filterCreated = (created) => {
+    return {
+        type: FILTER_CREATED,
+        payload: created
+    }
+}

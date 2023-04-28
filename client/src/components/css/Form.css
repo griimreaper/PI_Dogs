@@ -12,10 +12,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: -10px;
-    margin-bottom: 10px;
+    padding-bottom: 20px;
     background-color: rgba(250, 235, 215, 0.694);
 }
+
 .formContainer h1 {
     font-family: 'Cinzel', serif;
     letter-spacing: 4px;
@@ -49,7 +49,7 @@
     justify-content: center;
     width: 50%;
     height: 37rem;
-    padding: 2%;
+    padding: 20px 40px 13% 0px;
     background-color: rgba(0, 0, 0, 0.513);
     border-radius: 0px 100px 100px 0px;
 }
@@ -85,46 +85,67 @@
 
 .temperamentContainer label {
     margin-left: 5px;
-    
+
 }
 
 .inputBox {
     display: flex;
     margin: auto;
     margin-top: 10px;
-    width: 90%;
-    height: 6%;
+    width: 95%;
+    height: 7.5%;
     border-radius: 25px;
     color: white;
     background-color: rgba(0, 0, 0, 0.556);
 }
-.inputBox span{
-    font-size: 1rem;
+
+.inputBox span {
+    font-size: 1.7rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-left: 10px;
 }
-.inputBox input{
+
+.inputBox input {
     margin: 5px 40% 5px 12%;
-    width: 12%;
+    width: 14%;
+    font-size: 24px;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    line-height: 1.15;
+    letter-spacing: 2px;
     white-space: nowrap;
+    box-shadow: 0px 10px 20px -18px;
     position: absolute;
 }
+
+.inputBox input:focus {
+    border-bottom: 2px solid #c75b5b;
+    border-radius: 4px 4px 2px 2px;
+}
+
+.inputBox input:hover {
+    outline: 1px solid lightgrey;
+}
+
+
 .inputBox p {
     color: rgb(198, 0, 0);
-    font-size: 0.8rem;
-    position:absolute;
-    right: 8%;
-    width: 200px;
+    font-size: 1rem;
+    position: absolute;
+    right: 10.2%;
+    width: 178px;
     white-space: wrap;
     margin: auto;
 }
 
-.submit {
-    padding: 9px 18px;
+.submitOn {
+    padding: 10px 20px;
     border-radius: 10px;
     border: 0;
-    margin-top: 30px;
+    margin-top: 22px;
     background-color: rgb(255, 56, 86);
     letter-spacing: 1px;
     font-size: 10px;
@@ -134,13 +155,25 @@
     color: hsl(0, 0%, 100%);
 }
 
-.submit:hover {
+.submitOn:hover {
     box-shadow: rgb(201, 46, 70) 0px 2px 0px 0px;
 }
 
-.submit:active {
+.submitOn:active {
     background-color: rgb(255, 56, 86);
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(5px);
     transition: 200ms;
+}
+
+.submitOff {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0;
+    margin-top: 25px;
+    background-color: rgb(139, 139, 139);
+    letter-spacing: 1px;
+    font-size: 10px;
+    transition: all .3s ease;
+    color: hsl(0, 0%, 100%);
 }

@@ -5,8 +5,8 @@
     margin: auto;
     width: 100%;
     height: 59px;
-    padding: 5px;
-    box-shadow: 0px 0px 3px red;
+    padding: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 5px red;
     position: relative
 }
 
@@ -75,4 +75,60 @@
     fill: #9e9ea7;
     width: 1rem;
     height: 1rem;
+}
+
+.filterComp {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    right: 25%;
+    width: 50%;
+    top: 0;
+    background-color: rgb(255, 251, 245);
+    padding: 15px 0px 30px 0px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 0px 5px red;
+}
+
+.filterComp button {
+    margin-top: 0;
+}
+
+:root {
+    --primary-color: rgb(255, 56, 86);
+    --primary-color-dark: rgb(201, 46, 70);
+    --text-color: hsl(0, 0%, 100%);
+}
+
+.navContainer select {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+    padding: 10px 20px;
+    transition: all .3s ease;
+}
+
+.navContainer select:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.navContainer select:focus {
+    box-shadow: 0px 0px 5px 2px rgba(255, 56, 86, 0.75);
+}
+
+.navContainer select:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.navContainer select:active {
+    background-color: var(--primary-color);
+    box-shadow: 0px 5px 0px 0px var(--primary-color-dark);
+    transform: translateY(5px);
+    transition: 200ms;
 }

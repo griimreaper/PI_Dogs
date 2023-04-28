@@ -29,8 +29,8 @@ async function getDogs(req, res) {
         )
         const newDogs = []
         for (const dog of dogsDB) {
-            const { id, name, weight, height, image, age, temperaments } = dog
-            newDogs.push({ id, name, weight, height, image, age, temperaments: temperaments.map(t => t.name) })
+            const { id, name, weight, height, image, age, temperaments, created } = dog
+            newDogs.push({ id, name, weight, height, image, age, created, temperaments: temperaments.map(t => t.name) })
         }
 
 

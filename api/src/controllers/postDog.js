@@ -35,6 +35,7 @@ const postDog = async (req, res) => {
                 height,
                 weight,
                 age,
+                created: true
             },
         });
 

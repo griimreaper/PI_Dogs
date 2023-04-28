@@ -37,11 +37,10 @@ export default function Form() {
             })
         )
     }
-    console.log(errors)
+
     const handleCheckboxChange = (e) => {
         const selectedTemperament = e.target.value;
         const isChecked = e.target.checked;
-
         let updatedTemperaments = [...selectedTemperaments];
         if (isChecked) {
             updatedTemperaments.push(selectedTemperament);
@@ -61,6 +60,12 @@ export default function Form() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
+            if (Number(dogData.height.split("-")[0]) > Number(dogData.height.split("-")[1])) {
+                return alert("The min value of height cannot be greater than the max")
+            }
+            if (Number(dogData.weight.split("-")[0]) > Number(dogData.weight.split("-")[1])) {
+                return alert("The min value of height cannot be greater than the max")
+            }
             const { data } = await axios.post("http://localhost:3001/dogs", dogData)
             alert(data.message)
         } catch ({ response }) {
@@ -69,54 +74,55 @@ export default function Form() {
     }
 
     return (
-        <div class='formContainer'>
+        <div className='formContainer'>
             <h1>Create or insert your dog</h1>
-            <div class='formContent'>
-                <div class='imageContainer'>
-                    <img src={errors.image || !dogData.image? "https://webstockreview.net/images/clipart-clock-dog-2.png" : dogData.image} alt="dogImage" />
+            <div className='formContent'>
+                <div className='imageContainer'>
+                    <img src={errors.image || !dogData.image ? "https://webstockreview.net/images/clipart-clock-dog-2.png" : dogData.image} alt="dogImage" />
                 </div>
-                <div class='formFields'>
+                <div className='formFields'>
                     <form>
-                        <a class="create">woof! woof!</a>
-                        <div class="inputBox">
+                        <h3 className="create">woof! woof!</h3>
+                        <div className="inputBox">
                             <span>Name</span>
                             <input value={dogData.name} name="name" onChange={handleChange}></input>
                             <p>{errors.name}</p>
                         </div>
-                        <div class="inputBox">
+
+                        <div className="inputBox">
                             <span>image URL</span>
                             <input value={dogData.image} name="image" onChange={handleChange}></input>
                             <p>{errors.image}</p>
                         </div>
-                        <div class="inputBox">
+                        <div className="inputBox">
                             <span>Height</span>
                             <input value={dogData.height} name="height" onChange={handleChange} />
                             <p>{errors.height}</p>
                         </div>
-                        <div class="inputBox">
+                        <div className="inputBox">
                             <span>Weight</span>
                             <input value={dogData.weight} name="weight" onChange={handleChange} />
                             <p>{errors.weight}</p>
                         </div>
-                        <div class="inputBox">
+                        <div className="inputBox">
                             <span>life span</span>
-                            <input value={dogData.age} name="age" onChange={handleChange} />
+                            <input value={dogData.age} name="age" type="number" onChange={handleChange} />
                             <p>{errors.age}</p>
                         </div>
-                        <h3 class="create">Temperaments</h3>
-                        <div class='temperamentContainer'>
+                        <h3 className="create">Temperaments</h3>
+                        <div className='temperamentContainer'>
                             {temperament.map((t) => {
                                 return (
-                                    <div class="temperament" key={t.id}>
+                                    <div className="temperament" key={t.id}>
                                         <input type="checkbox" id={t.id} name={t.name} value={t.name} onChange={handleCheckboxChange} />
                                         <span htmlFor={t.id}>{t.name}</span>
                                     </div>
                                 )
                             })}
                         </div>
-                        <button class="submit" onClick={handleSubmit}>Insert</button>
-                        </form>
-                        </div>
+                        <button className={Object.keys(errors).length === 0 && dogData.name !== "" ? "submitOn" : "submitOff"} onClick={handleSubmit}>Insert</button>
+                    </form>
+                </div>
             </div>
         </div>
     )

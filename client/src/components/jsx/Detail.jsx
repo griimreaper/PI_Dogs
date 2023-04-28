@@ -28,8 +28,8 @@ export default function Detail() {
                 <img src={image} alt={name} />
                 <div class="dog-details">
                     <h2>#{dog.id}</h2> 
-                    <h3>Usually put between {height}</h3>
-                    <h3>He has an approximate weight of 16 or 17 {weight}</h3>
+                    <h3>Usually put between {height} </h3>
+                    <h3>He has an approximate weight of {weight} </h3>
                     {temperament && <h3>Their tempers are</h3>}
                     {temperament && temperament.map((t) => {
                         return (<p>{t}</p>)
