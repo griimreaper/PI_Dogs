@@ -1,5 +1,5 @@
 .navContainer {
-    background-color: rgba(255, 255, 255, 0.744);
+    background-color:rgb(53, 53, 53);
     display: flex;
     justify-content: space-around;
     margin: auto;
@@ -81,11 +81,11 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     right: 25%;
     width: 50%;
     top: 0;
-    background-color: rgb(255, 251, 245);
+    background-color: rgb(53, 53, 53);
     padding: 15px 0px 30px 0px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0px 0px 5px red;
@@ -110,7 +110,7 @@
     font-size: 15px;
     letter-spacing: 1.5px;
     margin-top: 5px;
-    padding: 10px 20px;
+    padding: 10px 5px;
     transition: all .3s ease;
 }
 

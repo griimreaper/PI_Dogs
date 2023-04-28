@@ -23,7 +23,7 @@ function App() {
       .catch((error) => {
         console.log(error)
       })
-  }, [])
+  }, [dispatch])
 
 
   async function onSearch(name) {

@@ -4,7 +4,8 @@
     align-items: center;
     background-color: rgba(250, 235, 215, 0.665);
     width: auto;
-    padding: 2.5%;
+    padding: 4%;
+    padding-bottom: 10%;
 }
 
 .dog-header {

@@ -16,7 +16,7 @@ export default function Detail() {
             .catch((error) => {
                 console.log(error)
             })
-    }, [])
+    }, [id])
 
     const { name, image, weight, height, temperament } = dog
     return (

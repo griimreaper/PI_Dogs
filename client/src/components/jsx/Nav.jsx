@@ -18,6 +18,7 @@ export default function Nav({ onSearch }) {
     useEffect(() => {
         setShowFilters(false);
     }, [location.pathname]);
+    
     return (
         <div className="navContainer">
             <Link to="/create">
