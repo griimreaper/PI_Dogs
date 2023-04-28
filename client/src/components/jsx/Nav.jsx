@@ -14,7 +14,7 @@ export default function Nav({ onSearch }) {
     function handlerButtonFilter() {
         showFilters ? setShowFilters(false) : setShowFilters(true)
     }
-
+    
     useEffect(() => {
         setShowFilters(false);
     }, [location.pathname]);

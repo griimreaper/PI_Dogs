@@ -27,12 +27,12 @@ export default function Detail() {
             <div class="dog-content">
                 <img src={image} alt={name} />
                 <div class="dog-details">
-                    <h2>#{dog.id}</h2> 
+                    <h2>#{dog.id}</h2>
                     <h3>Usually put between {height} </h3>
                     <h3>He has an approximate weight of {weight} </h3>
                     {temperament && <h3>Their tempers are</h3>}
-                    {temperament && temperament.map((t) => {
-                        return (<p>{t}</p>)
+                    {temperament && temperament.map((t, i) => {
+                        return (<p key={i}>{t}</p>)
                     })}
                 </div>
             </div>

@@ -12,7 +12,7 @@ export default function Card(props) {
                 <h2>{name}</h2>
                 <p>W: {weight}</p>
                 <div className='tempCont'>
-                {temperaments && temperaments.map(t => (<li>{t}</li>))}
+                    {temperaments && temperaments.map((t, i) => (<li key={i}>{t}</li>))}
                 </div>
             </Link>
         </div>
