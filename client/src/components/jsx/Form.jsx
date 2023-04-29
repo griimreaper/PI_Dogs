@@ -96,7 +96,6 @@ export default function Form() {
                             <input value={dogData.name} name="name" onChange={handleChange}></input>
                             <p>{errors.name}</p>
                         </div>
-
                         <div className="inputBox">
                             <span>image URL</span>
                             <input value={dogData.image} name="image" onChange={handleChange}></input>
