@@ -3,13 +3,14 @@ const axios = require("axios");
 require("dotenv").config()
 
 const { ENDPOINT } = process.env //extramos la api de .env
+const { api_key } = process.env
 
 async function getDogByName(req, res) {
     try {
         let name = req.query.name; //requerimos el name por query
         name = name.toLowerCase(); // Convertimos el string en minúsculas
 
-        let { data } = await axios.get(ENDPOINT)
+        let { data } = await axios.get(ENDPOINT+api_key)
         data = data.find((d) => d.name.toLowerCase() === name) // comparamos con el name del perro en minuscula
 
         if (data) {         //si existe lo retornamos

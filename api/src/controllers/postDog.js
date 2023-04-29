@@ -3,6 +3,7 @@ const axios = require("axios")
 require("dotenv").config()
 
 const { ENDPOINT } = process.env //extramos la api de .env
+const { api_key } = process.env
 
 let id = 1
 let idEnUso
@@ -11,7 +12,7 @@ const postDog = async (req, res) => {
     try {
         const { name, image, height, weight, age, temperaments } = req.body // recibimos por body los datos que nos envian desde el front
 
-        const { data } = await axios.get(ENDPOINT)  //buscamos un id que no se encuentre utilizado de la api
+        const { data } = await axios.get(ENDPOINT+api_key)  //buscamos un id que no se encuentre utilizado de la api
 
         if (!idEnUso) { // esta condicional es para que solo cargue los id una vez
             idEnUso = data.map((d) => d = d.id) // convertimos la data en un arrays de ids

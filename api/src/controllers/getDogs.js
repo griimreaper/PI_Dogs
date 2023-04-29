@@ -3,10 +3,11 @@ const { Dog, Temperaments } = require("../db")
 require("dotenv").config()
 
 const { ENDPOINT } = process.env //extramos la api de .env
+const { api_key } = process.env
 
 async function getDogs(req, res) {
     try {
-        const { data } = await axios.get(ENDPOINT)
+        const { data } = await axios.get(ENDPOINT+api_key)
         const dogsAPI = data.map((dog) => {  //extraemos los perros de nuestra api
             // const temperament = dog.temperament.split(",").map((t)=> t.trim())
             return {

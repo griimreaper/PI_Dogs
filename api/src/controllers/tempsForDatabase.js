@@ -5,10 +5,11 @@ const { Temperaments } = require("../db")
 require("dotenv").config()
 
 const { ENDPOINT } = process.env //extramos la api de .env
+const { api_key } = process.env
 
 async function tempsForDatabase() {
     try {
-        const { data } = await axios.get(ENDPOINT)   //vamos a iterar uno por uno los dogs para extraer los temperaments
+        const { data } = await axios.get(ENDPOINT+api_key)   //vamos a iterar uno por uno los dogs para extraer los temperaments
         for (const r of data) {
             if (r.temperament) { // si tiene temperamentos los agregamos a la data table temperaments
                 const dogTemps = r.temperament.split(",").map(t => t.trim())

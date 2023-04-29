@@ -3,11 +3,13 @@ const { Dog, Temperaments } = require("../db")
 require("dotenv").config()
 
 const { ENDPOINT } = process.env //extramos la api de .env
+const { api_key } = process.env
+
 async function getDogById(req, res) {
     try {
         const idp = req.params.id //extraemos el id de req.params
 
-        let { data } = await axios.get(ENDPOINT)
+        let { data } = await axios.get(ENDPOINT+api_key)
         data = data.find((d) => d.id === Number(idp)) // buscamos al perro por el id
 
         if (data) {         //si existe lo retornamos
@@ -24,13 +26,13 @@ async function getDogById(req, res) {
             res.status(200).json(dogApi)
         } else {     //si no existe lo buscamos en la BD para retornarlo
 
-            const dog = await Dog.findOne({ 
+            const dog = await Dog.findOne({
                 where: { id: idp },
                 include: [{
                     model: Temperaments
                 }]
             })
-            
+
             if (dog) {
                 const { id, name, weight, height, image, age, temperaments } = dog
                 res.status(200).json({
