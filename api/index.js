@@ -21,9 +21,9 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const tempsForDatabase = require("./src/controllers/tempsForDatabase.js")
 
-tempsForDatabase()
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  tempsForDatabase()
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

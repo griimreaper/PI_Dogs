@@ -6,7 +6,7 @@ import Landing from "./components/jsx/Landing";
 import Detail from './components/jsx/Detail';
 import Form from './components/jsx/Form';
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addDogs } from './redux/actions';
 import axios from "axios";
 
@@ -30,7 +30,7 @@ function App() {
     try {
       const { data } = await axios.get(`http://localhost:3001/dogsname?name=${name}`)
       dispatch(addDogs(data))
-    } catch ({response}) {
+    } catch ({ response }) {
       alert(response.data.error)
     }
   }
@@ -40,7 +40,7 @@ function App() {
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Cards/>} />
+        <Route path="/home" element={<Cards />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/create" element={<Form />} />
       </Routes>

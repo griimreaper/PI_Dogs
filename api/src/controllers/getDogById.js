@@ -19,7 +19,7 @@ async function getDogById(req, res) {
                 weight: weight.imperial,
                 height: height.imperial,
                 age: life_span,
-                temperament: temperament.split(",").map((t) => t.trim())
+                temperaments: temperament.split(",").map((t) => t.trim())
             }
             res.status(200).json(dogApi)
         } else {     //si no existe lo buscamos en la BD para retornarlo

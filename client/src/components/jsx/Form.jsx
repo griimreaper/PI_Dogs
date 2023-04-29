@@ -105,7 +105,7 @@ export default function Form() {
                             <p>{errors.weight}</p>
                         </div>
                         <div className="inputBox">
-                            <span>life span</span>
+                            <span>Age</span>
                             <input value={dogData.age} name="age" type="number" onChange={handleChange} />
                             <p>{errors.age}</p>
                         </div>

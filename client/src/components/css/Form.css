@@ -71,6 +71,7 @@
 
 .temperament {
     display: flex;
+    
     flex-wrap: nowrap;
     width: 25%;
     white-space: nowrap;
@@ -78,18 +79,18 @@
 
 .temperament span {
     font-size: 0.8rem;
+
 }
 
 .temperamentContainer div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .temperamentContainer label {
     margin-left: 5px;
-
 }
 
 .inputBox {
