@@ -1,3 +1,4 @@
+import axios from "axios"
 export const NEXT_PAGE = "NEXT_PAGE"
 export const PREV_PAGE = "PREV_PAGE"
 export const ADD_DOGS = "ADD_DOGS"
@@ -6,6 +7,7 @@ export const RESET_DOGS = "RESET_DOGS"
 export const ORDER_ALPHABETHYCALLY = "ORDER_ALPHABETYCALLY"
 export const ORDER_WEIGHT = "ORDER_WEIGHT"
 export const FILTER_CREATED = "FILTER_CREATED"
+export const NEW_DOG = "NEW_DOG"
 
 
 export const nextPage = () => {
@@ -51,5 +53,20 @@ export const filterCreated = (created) => {
     return {
         type: FILTER_CREATED,
         payload: created
+    }
+}
+export const newDog = (dog) => {
+    console.log("holaaaaaa")
+    const endpoint = "http://localhost:3001/dogs"
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post(endpoint, dog)
+            dispatch({
+                type: NEW_DOG,
+                payload: data,
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

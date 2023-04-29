@@ -1,4 +1,4 @@
-import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED } from "./actions";
+import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG } from "./actions";
 
 const initialState = {
     numPage: 1,
@@ -75,7 +75,13 @@ const reducer = (state = initialState, { type, payload }) => {
         case FILTER_CREATED:
             return {
                 ...state,
-                dogs: payload === "Created" ? state.dogsOrigin.filter((d) => d.hasOwnProperty("created")): state.dogsOrigin.filter((d) => !d.hasOwnProperty("created"))
+                dogs: payload === "Created" ? state.dogsOrigin.filter((d) => d.hasOwnProperty("created")) : state.dogsOrigin.filter((d) => !d.hasOwnProperty("created"))
+            }
+        case NEW_DOG:
+            return {
+                ...state,
+                dogs: [...state.dogs, payload],
+                dogsOrigin: [...state.dogsOrigin, payload]
             }
         default:
             return state

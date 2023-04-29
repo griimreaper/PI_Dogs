@@ -49,7 +49,8 @@ const postDog = async (req, res) => {
                     await dog.addTemperaments(temp)
                 });
             }
-            res.status(200).json({ message: "Dog created successfully"})
+
+            res.status(200).json({...dog.dataValues, temperaments})
         }
     } catch (error) {
         res.status(500).json({ error: error.message })
