@@ -69,10 +69,16 @@ export default function Form() {
                 return alert("The min value of height cannot be greater than the max")
             }
             dispatch(newDog(dogData))
+            await axios.post("http://localhost:3001/dogs", dogData)
             alert("Dog created successfully")
+            window.location.href = "http://localhost:3000/home"
         } catch ({ response }) {
             alert(response.data.error)
         }
+    }
+
+    const submitOff = (e) => {
+        e.preventDefault()
     }
 
     return (
@@ -122,7 +128,7 @@ export default function Form() {
                                 )
                             })}
                         </div>
-                        <button className={Object.keys(errors).length === 0 && dogData.name !== "" ? "submitOn" : "submitOff"} onClick={handleSubmit}>Insert</button>
+                        <button className={Object.keys(errors).length === 0 && dogData.name !== "" ? "submitOn" : "submitOff"} onClick={Object.keys(errors).length === 0 && dogData.name !== "" ? handleSubmit : submitOff}>Insert</button>
                     </form>
                 </div>
             </div>

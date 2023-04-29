@@ -56,7 +56,6 @@ export const filterCreated = (created) => {
     }
 }
 export const newDog = (dog) => {
-    console.log("holaaaaaa")
     const endpoint = "http://localhost:3001/dogs"
     return async (dispatch) => {
         try {
