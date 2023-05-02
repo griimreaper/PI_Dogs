@@ -78,10 +78,14 @@ const reducer = (state = initialState, { type, payload }) => {
                 dogs: payload === "Created" ? state.dogsOrigin.filter((d) => d.hasOwnProperty("created")) : state.dogsOrigin.filter((d) => !d.hasOwnProperty("created"))
             }
         case NEW_DOG:
-            return {
-                ...state,
-                dogs: [...state.dogs, payload],
-                dogsOrigin: [...state.dogsOrigin, payload]
+            if (typeof payload === "object") {
+                return {
+                    ...state,
+                    dogs: [...state.dogs, payload],
+                    dogsOrigin: [...state.dogsOrigin, payload]
+                }
+            } else {
+                return state
             }
         default:
             return state

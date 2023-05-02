@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import "../css/Form.css"
 import { validate } from "./Validation.jsx"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { newDog } from '../../redux/actions'
 
 export default function Form() {
@@ -18,6 +18,7 @@ export default function Form() {
     const [temperament, setTemperament] = useState([])
     const [selectedTemperaments, setSelectedTemperaments] = useState([]);
     const dispatch = useDispatch()
+    const { dogsOrigin } = useSelector((state) => state)
 
     useEffect(() => {
         const fetchTemperaments = async () => {
@@ -69,9 +70,12 @@ export default function Form() {
                 return alert("The min value of height cannot be greater than the max")
             }
             dispatch(newDog(dogData))
-            await axios.post("http://localhost:3001/dogs", dogData)
-            alert("Dog created successfully")
-            window.location.href = "http://localhost:3000/home"
+            if (!dogsOrigin.find((d) => d.name === dogData.name)) {
+                alert("Dog created successfully")
+                window.location.href = "http://localhost:3000/home"
+            } else {
+                alert("This dog does exist")
+            }
         } catch ({ response }) {
             alert(response.data.error)
         }

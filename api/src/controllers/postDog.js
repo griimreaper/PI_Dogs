@@ -12,7 +12,7 @@ const postDog = async (req, res) => {
     try {
         const { name, image, height, weight, age, temperaments } = req.body // recibimos por body los datos que nos envian desde el front
 
-        const { data } = await axios.get(ENDPOINT+api_key)  //buscamos un id que no se encuentre utilizado de la api
+        const { data } = await axios.get(ENDPOINT + api_key)  //buscamos un id que no se encuentre utilizado de la api
 
         if (!idEnUso) { // esta condicional es para que solo cargue los id una vez
             idEnUso = data.map((d) => d = d.id) // convertimos la data en un arrays de ids
@@ -41,7 +41,7 @@ const postDog = async (req, res) => {
         });
 
         if (!created) {  // si el perro ya existe..
-            res.status(401).json({ error: "The Dog does exist" });
+            return res.status(401).json({ error: "The Dog does exist" });
         } else {
             if (temperaments) {
                 temperaments.forEach(async (t) => {              // Relacionamos con la tabla intermedia
@@ -51,7 +51,7 @@ const postDog = async (req, res) => {
                 });
             }
 
-            res.status(200).json({...dog.dataValues, temperaments})
+            res.status(200).json({ ...dog.dataValues, temperaments })
         }
     } catch (error) {
         res.status(500).json({ error: error.message })
