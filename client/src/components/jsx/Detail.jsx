@@ -18,7 +18,7 @@ export default function Detail() {
             })
     }, [id])
 
-    const { name, image, weight, height, temperaments } = dog
+    const { name, image, weight, age, height, temperaments } = dog
     return (
         <div class="dog-detail">
             <div class="dog-header">
@@ -28,12 +28,17 @@ export default function Detail() {
                 <img src={image} alt={name} />
                 <div class="dog-details">
                     <h2>#{dog.id}</h2>
+                    <fieldset>
                     <h3>Usually put between {height} </h3>
                     <h3>He has an approximate weight of {weight} </h3>
+                    <h3>Usually lives between {age}</h3>
+                    </fieldset>
+                    <fieldset>
                     {temperaments && <h3>Their tempers are</h3>}
                     {temperaments && temperaments.map((t, i) => {
                         return (<p key={i}>{t}</p>)
                     })}
+                    </fieldset>
                 </div>
             </div>
         </div>

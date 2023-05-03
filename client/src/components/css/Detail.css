@@ -48,3 +48,10 @@
 .dog-details p{
     margin: 0;
 }
+
+fieldset {
+    border: 0px;
+    border-bottom: 2px solid black;
+    margin-right: 20px;
+    padding-bottom: 20px;
+}
