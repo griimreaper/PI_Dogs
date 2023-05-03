@@ -1,38 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import "../css/Nav.css"
-import { orderAlphabethycally, orderWeight, filterCreated, resetDogs } from "../../redux/actions";
+import { orderAlphabethycally, orderWeight, filterCreated, resetDogs, filterTemperament, handleNumber } from "../../redux/actions";
 
 export default function Filter({ handlerButtonFilter }) {
     const [visible, setVisible] = useState(false);
+    const { temperaments } = useSelector((state) => state)
     const dispatch = useDispatch()
     const styles = {
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.5s ease',
     };
+
     useEffect(() => {
         setVisible(true)
     }, [])
+
+
     function handlerButtonHide() {
         setVisible(false)
         setTimeout(() => {
             handlerButtonFilter()
         }, 500);
     }
-    
-    function alphabethycally(e){
+
+    function alphabethycally(e) {
         dispatch(orderAlphabethycally(e.target.value))
+        dispatch(handleNumber(1))
     }
 
-    function weight(e){
+    function weight(e) {
         dispatch(orderWeight(e.target.value))
+        dispatch(handleNumber(1))
     }
 
-    function created(e){
+    function created(e) {
         dispatch(filterCreated(e.target.value))
+        dispatch(handleNumber(1))
     }
-    function reset(){
+    function reset() {
         dispatch(resetDogs())
+        dispatch(handleNumber(1))
+    }
+    function temperament(e){
+        dispatch(filterTemperament(e.target.value))
+        dispatch(handleNumber(1))
     }
 
     return (
@@ -52,6 +64,10 @@ export default function Filter({ handlerButtonFilter }) {
                 <option value="DEFAULT">Filter for</option>
                 <option value="Breed">Breeds</option>
                 <option value="Created">Created</option>
+            </select>
+            <select onChange={temperament} name="filterTemperament" defaultValue="DEFAULT">
+                <option value="DEFAULT">Temperament</option>
+                {temperaments.map((t) => <option key={t.id} value={t.name}>{t.name}</option>)}
             </select>
             <button onClick={handlerButtonHide}>Hide</button>
         </div>

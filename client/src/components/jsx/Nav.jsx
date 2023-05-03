@@ -3,7 +3,7 @@ import "../css/Nav.css"
 import { Link, useLocation } from 'react-router-dom'
 import Searchbar from './Searchbar'
 import { useDispatch } from 'react-redux'
-import { resetDogs } from '../../redux/actions'
+import { handleNumber } from '../../redux/actions'
 import Filter from './Filter'
 
 export default function Nav({ onSearch }) {
@@ -14,18 +14,21 @@ export default function Nav({ onSearch }) {
     function handlerButtonFilter() {
         showFilters ? setShowFilters(false) : setShowFilters(true)
     }
-    
+    function handlerButtonHome() {
+        if (location.pathname === "/home")
+            dispatch(handleNumber(1))
+    }
     useEffect(() => {
         setShowFilters(false);
     }, [location.pathname]);
-    
+
     return (
         <div className="navContainer">
             <Link to="/create">
                 <button>Create</button>
             </Link>
             <Link to="/home">
-                <button onClick={location.pathname === "/home" ? dispatch(resetDogs) : null}>Home</button>
+                <button onClick={handlerButtonHome}>Home</button>
             </Link>
             <Link>
                 {location.pathname === "/home" && <button onClick={handlerButtonFilter}>Filter</button>}

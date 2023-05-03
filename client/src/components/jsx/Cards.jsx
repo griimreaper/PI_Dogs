@@ -24,7 +24,7 @@ export default function Cards() {
 
     return (
         <div className='homeContainer'>
-            <svg className={numPage > 1 ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage > 1 ? prev : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg className={numPage > 1 ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage > 1 ? prev : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <polyline points="15 6 9 12 15 18" />
             </svg>
@@ -42,7 +42,7 @@ export default function Cards() {
                     />)
                 })}
             </div>
-            <svg className={numPage < cantPages ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage < cantPages ? next : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg className={numPage < cantPages ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage < cantPages ? next : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <polyline points="9 6 15 12 9 18" />
             </svg>

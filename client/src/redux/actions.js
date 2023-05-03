@@ -8,7 +8,8 @@ export const ORDER_ALPHABETHYCALLY = "ORDER_ALPHABETYCALLY"
 export const ORDER_WEIGHT = "ORDER_WEIGHT"
 export const FILTER_CREATED = "FILTER_CREATED"
 export const NEW_DOG = "NEW_DOG"
-
+export const ADD_TEMPERAMENTS = "ADD_TEMPERAMENTS"
+export const FILTER_TEMPERAMENT = "FILTER_TEMPERAMENT"
 
 export const nextPage = () => {
     return {
@@ -67,5 +68,17 @@ export const newDog = (dog) => {
         } catch (error) {
             console.log(error)
         }
+    }
+}
+export const addTemperaments = (temperaments) => {
+    return {
+        type:ADD_TEMPERAMENTS,
+        payload: temperaments
+    }
+}
+export const filterTemperament = (temperament) => {
+    return {
+        type:FILTER_TEMPERAMENT,
+        payload:temperament
     }
 }

@@ -1,9 +1,10 @@
-import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG } from "./actions";
+import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG, ADD_TEMPERAMENTS, FILTER_TEMPERAMENT } from "./actions";
 
 const initialState = {
     numPage: 1,
     dogs: [],
-    dogsOrigin: []
+    dogsOrigin: [],
+    temperaments: []
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -39,6 +40,11 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 dogs: [...state.dogsOrigin]
+            }
+        case ADD_TEMPERAMENTS:
+            return {
+                ...state,
+                temperaments: [...state.temperaments, ...payload]
             }
         case ORDER_ALPHABETHYCALLY:
             const sortedDogs = state.dogs.sort((a, b) => {
@@ -77,19 +83,25 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 dogs: payload === "Created" ? state.dogsOrigin.filter((d) => d.hasOwnProperty("created")) : state.dogsOrigin.filter((d) => !d.hasOwnProperty("created"))
             }
-        case NEW_DOG:
-            if (typeof payload === "object") {
+            case NEW_DOG:
+                if (typeof payload === "object") {
+                    return {
+                        ...state,
+                        dogs: [...state.dogs, payload],
+                        dogsOrigin: [...state.dogsOrigin, payload]
+                    }
+                } else {
+                    return state
+                }
+                case FILTER_TEMPERAMENT:
+                    const filterTemp = state.dogsOrigin.filter(d=>d.temperaments?.includes(payload))
                 return {
                     ...state,
-                    dogs: [...state.dogs, payload],
-                    dogsOrigin: [...state.dogsOrigin, payload]
+                    dogs:filterTemp
                 }
-            } else {
-                return state
-            }
-        default:
-            return state
-    }
+                default:
+                    return state
+                }
 }
 
 export default reducer;

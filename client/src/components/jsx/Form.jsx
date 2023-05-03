@@ -1,8 +1,8 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../css/Form.css"
 import { validate } from "./Validation.jsx"
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { newDog } from '../../redux/actions'
 
 export default function Form() {
@@ -15,18 +15,11 @@ export default function Form() {
         temperaments: []
     })
     const [errors, setErrors] = useState({})
-    const [temperament, setTemperament] = useState([])
     const [selectedTemperaments, setSelectedTemperaments] = useState([]);
     const dispatch = useDispatch()
-    const { dogsOrigin } = useSelector((state) => state)
+    const navigate = useNavigate()
+    const { dogsOrigin, temperaments } = useSelector((state) => state)
 
-    useEffect(() => {
-        const fetchTemperaments = async () => {
-            const { data } = await axios.get("http://localhost:3001/temperaments");
-            setTemperament(data);
-        };
-        fetchTemperaments();
-    }, []);
 
     const handleChange = (e) => {
         setDogData({
@@ -72,7 +65,7 @@ export default function Form() {
             dispatch(newDog(dogData))
             if (!dogsOrigin.find((d) => d.name === dogData.name)) {
                 alert("Dog created successfully")
-                window.location.href = "http://localhost:3000/home"
+                navigate("/home")
             } else {
                 alert("This dog does exist")
             }
@@ -122,7 +115,7 @@ export default function Form() {
                         </div>
                         <h3 className="create">Temperaments</h3>
                         <div className='temperamentContainer'>
-                            {temperament.map((t) => {
+                            {temperaments.map((t) => {
                                 return (
                                     <div className="temperament" key={t.id}>
                                         <input type="checkbox" id={t.id} name={t.name} value={t.name} onChange={handleCheckboxChange} />
