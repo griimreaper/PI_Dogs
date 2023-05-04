@@ -33,8 +33,8 @@ export default function Detail() {
                     <h3>He has an approximate weight of {weight} </h3>
                     <h3>Usually lives between {age}</h3>
                     </fieldset>
-                    <fieldset>
                     {temperaments && <h3>Their tempers are</h3>}
+                    <fieldset>
                     {temperaments && temperaments.map((t, i) => {
                         return (<p key={i}>{t}</p>)
                     })}
