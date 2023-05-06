@@ -18,7 +18,7 @@ export default function Searchbar({ onSearch }) {
     }
 
     function handleKeyDown(event) {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter') { //esto es para que el buscador funcione al tocar enter
             submit();
         }
     }

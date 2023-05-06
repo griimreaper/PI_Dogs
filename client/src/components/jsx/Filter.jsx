@@ -20,7 +20,7 @@ export default function Filter({ handlerButtonFilter }) {
     function handlerButtonHide() {
         setVisible(false)
         setTimeout(() => {
-            handlerButtonFilter()
+            handlerButtonFilter() // ocultamos el filtro luego de un tiempo para que de lugar a la transicion
         }, 500);
     }
 

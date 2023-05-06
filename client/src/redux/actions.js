@@ -11,6 +11,7 @@ export const NEW_DOG = "NEW_DOG"
 export const ADD_TEMPERAMENTS = "ADD_TEMPERAMENTS"
 export const FILTER_TEMPERAMENT = "FILTER_TEMPERAMENT"
 
+// Manejo del paginado
 export const nextPage = () => {
     return {
         type: NEXT_PAGE,
@@ -27,33 +28,16 @@ export const handleNumber = (num) => {
         payload: num
     }
 }
-export const addDogs = (dogs) => {
+// Manejo de perros
+export const addDogs = (dogs) => { //action que agrega a los perros
     return {
         type: ADD_DOGS,
         payload: dogs
     }
 }
-export const resetDogs = () => {
+export const resetDogs = () => { //mostrar todos los perros
     return {
         type: RESET_DOGS,
-    }
-}
-export const orderAlphabethycally = (order) => {
-    return {
-        type: ORDER_ALPHABETHYCALLY,
-        payload: order
-    }
-}
-export const orderWeight = (order) => {
-    return {
-        type: ORDER_WEIGHT,
-        payload: order
-    }
-}
-export const filterCreated = (created) => {
-    return {
-        type: FILTER_CREATED,
-        payload: created
     }
 }
 export const newDog = (dog) => {
@@ -70,15 +54,36 @@ export const newDog = (dog) => {
         }
     }
 }
+// Filtrado
+export const orderAlphabethycally = (order) => { //alfabeticamente
+    return {
+        type: ORDER_ALPHABETHYCALLY,
+        payload: order
+    }
+}
+export const orderWeight = (order) => { // por peso
+    return {
+        type: ORDER_WEIGHT,
+        payload: order
+    }
+}
+export const filterCreated = (created) => { //por creado
+    return {
+        type: FILTER_CREATED,
+        payload: created
+    }
+}
+export const filterTemperament = (temperament) => { //por temperamentos
+    return {
+        type:FILTER_TEMPERAMENT,
+        payload:temperament
+    }
+}
+// action que carga los temperamentos
 export const addTemperaments = (temperaments) => {
     return {
         type:ADD_TEMPERAMENTS,
         payload: temperaments
     }
 }
-export const filterTemperament = (temperament) => {
-    return {
-        type:FILTER_TEMPERAMENT,
-        payload:temperament
-    }
-}
+

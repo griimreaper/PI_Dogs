@@ -16,9 +16,9 @@ export default function Form() {
     })
     const [errors, setErrors] = useState({})
     const [selectedTemperaments, setSelectedTemperaments] = useState([]);
+    const { dogsOrigin, temperaments } = useSelector((state) => state)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { dogsOrigin, temperaments } = useSelector((state) => state)
 
 
     const handleChange = (e) => {
@@ -34,20 +34,20 @@ export default function Form() {
         )
     }
 
-    const handleCheckboxChange = (e) => {
+    const handleCheckboxChange = (e) => { //manejamos los checkbox de los temperaments
         const selectedTemperament = e.target.value;
         const isChecked = e.target.checked;
         let updatedTemperaments = [...selectedTemperaments];
         if (isChecked) {
-            updatedTemperaments.push(selectedTemperament);
+            updatedTemperaments.push(selectedTemperament); // si esta chequeado lo agregamos al array de temperamentos seleccionados
         } else {
-            updatedTemperaments = updatedTemperaments.filter(
+            updatedTemperaments = updatedTemperaments.filter( // si cancelamos el check hacemos un filter para extraerlo del array de los seleccionados
                 (t) => t !== selectedTemperament
             );
         }
 
-        setSelectedTemperaments(updatedTemperaments);
-        setDogData({
+        setSelectedTemperaments(updatedTemperaments); // agregamos todos los temperamentos al estado de temperamentos seleccionados
+        setDogData({ // manejamos los seleccionados con los inputs en tiempo real
             ...dogData,
             temperaments: updatedTemperaments,
         });
@@ -56,17 +56,17 @@ export default function Form() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            if (Number(dogData.height.split("-")[0]) > Number(dogData.height.split("-")[1])) {
+            if (Number(dogData.height.split("-")[0]) > Number(dogData.height.split("-")[1])) { //controlamos que los datos de la altura se envien correctamente
                 return alert("The min value of height cannot be greater than the max")
             }
-            if (Number(dogData.weight.split("-")[0]) > Number(dogData.weight.split("-")[1])) {
+            if (Number(dogData.weight.split("-")[0]) > Number(dogData.weight.split("-")[1])) { //controlamos que los datos del peso se envien correctamente
                 return alert("The min value of height cannot be greater than the max")
             }
-            dispatch(newDog(dogData))
-            if (!dogsOrigin.find((d) => d.name === dogData.name)) {
+            if (!dogsOrigin.find((d) => d.name === dogData.name)) { //checkeamos si no existe otro perro con el mismo name
+                dispatch(newDog(dogData)) // agregamos al perro
                 alert("Dog created successfully")
                 navigate("/home")
-            } else {
+            } else { //si existe retornamos la alerta correspondiente
                 alert("This dog does exist")
             }
         } catch ({ response }) {

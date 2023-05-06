@@ -9,10 +9,10 @@ async function getDogById(req, res) {
     try {
         const idp = req.params.id //extraemos el id de req.params
 
-        let { data } = await axios.get(ENDPOINT+api_key)
+        let { data } = await axios.get(ENDPOINT+api_key) //extraemos el array de perros
         data = data.find((d) => d.id === Number(idp)) // buscamos al perro por el id
 
-        if (data) {         //si existe lo retornamos
+        if (data) {         //si matchea lo retornamos
             const { id, name, image, weight, height, life_span, temperament } = data
             const dogApi = {
                 id,
@@ -24,16 +24,16 @@ async function getDogById(req, res) {
                 temperaments: temperament.split(",").map((t) => t.trim())
             }
             res.status(200).json(dogApi)
-        } else {     //si no existe lo buscamos en la BD para retornarlo
+        } else {     //si no matchea lo buscamos en la BD 
 
             const dog = await Dog.findOne({
                 where: { id: idp },
-                include: [{
+                include: [{ // incluimos los temperaments si es que tiene
                     model: Temperaments
                 }]
             })
 
-            if (dog) {
+            if (dog) { //si matchea lo retornamos
                 const { id, name, weight, height, image, age, temperaments } = dog
                 res.status(200).json({
                     id,
@@ -45,7 +45,7 @@ async function getDogById(req, res) {
                     temperaments: temperaments.map(t => t.name)
                 })
             }
-            else res.status(400).json({ error: "The id of this dog does not exist" })
+            else res.status(400).json({ error: "The id of this dog does not exist" }) // si no lo encuentra respondemos con un 400
         }
     } catch (error) {
         res.status(404).status({ error: error.message })

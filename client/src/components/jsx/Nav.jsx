@@ -11,15 +11,15 @@ export default function Nav({ onSearch }) {
     const location = useLocation()
     const [showFilters, setShowFilters] = useState(false)
 
-    function handlerButtonFilter() {
+    function handlerButtonFilter() { // manejamos el boton filter para que se muestre cuando se presione el boton
         showFilters ? setShowFilters(false) : setShowFilters(true)
     }
-    function handlerButtonHome() {
+    function handlerButtonHome() { // manejamos el boton home para que al presionarlo nos devuelva a la pagina 1
         if (location.pathname === "/home")
             dispatch(handleNumber(1))
     }
     useEffect(() => {
-        setShowFilters(false);
+        setShowFilters(false); //ocultamos los filtros si vamos a otra ruta
     }, [location.pathname]);
 
     return (

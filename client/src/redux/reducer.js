@@ -25,26 +25,26 @@ const reducer = (state = initialState, { type, payload }) => {
                 numPage: state.numPage - 1
             }
         case ADD_DOGS:
-            if (Array.isArray(payload)) {
+            if (Array.isArray(payload)) { // agregamos todos los perros si se recibe un array
                 return {
                     ...state,
                     dogs: [...state.dogs, ...payload],
                     dogsOrigin: [...state.dogs, ...payload],
                 }
             }
-            return {
+            return { //solo mostramos un perro si se lo busca por la searchbar
                 ...state,
                 dogs: [payload]
+            }
+        case ADD_TEMPERAMENTS: // agregamos los temperamentos
+            return {
+                ...state,
+                temperaments: [...state.temperaments, ...payload]
             }
         case RESET_DOGS:
             return {
                 ...state,
                 dogs: [...state.dogsOrigin]
-            }
-        case ADD_TEMPERAMENTS:
-            return {
-                ...state,
-                temperaments: [...state.temperaments, ...payload]
             }
         case ORDER_ALPHABETHYCALLY:
             const sortedDogs = state.dogs.sort((a, b) => {
@@ -83,25 +83,25 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 dogs: payload === "Created" ? state.dogsOrigin.filter((d) => d.hasOwnProperty("created")) : state.dogsOrigin.filter((d) => !d.hasOwnProperty("created"))
             }
-            case NEW_DOG:
-                if (typeof payload === "object") {
-                    return {
-                        ...state,
-                        dogs: [...state.dogs, payload],
-                        dogsOrigin: [...state.dogsOrigin, payload]
-                    }
-                } else {
-                    return state
-                }
-                case FILTER_TEMPERAMENT:
-                    const filterTemp = state.dogsOrigin.filter(d=>d.temperaments?.includes(payload))
+        case FILTER_TEMPERAMENT:
+            const filterTemp = state.dogsOrigin.filter(d => d.temperaments?.includes(payload))
+            return {
+                ...state,
+                dogs: filterTemp
+            }
+        case NEW_DOG: // agregamos al perro desde el formulario
+            if (typeof payload === "object") {
                 return {
                     ...state,
-                    dogs:filterTemp
+                    dogs: [...state.dogs, payload],
+                    dogsOrigin: [...state.dogsOrigin, payload]
                 }
-                default:
-                    return state
-                }
+            } else {
+                return state
+            }
+        default:
+            return state
+    }
 }
 
 export default reducer;

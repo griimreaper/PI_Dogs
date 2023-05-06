@@ -15,7 +15,7 @@ export default function Cards() {
     let cantPages = Math.round(dogs.length / 8)
     let viewDogs = dogs.slice(desde, hasta)
 
-    function next() {
+    function next() { //handlers del paginado
         dispatch(nextPage())
     }
     function prev() {

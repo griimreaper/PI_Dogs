@@ -9,12 +9,12 @@ const { api_key } = process.env
 
 async function tempsForDatabase() {
     try {
-        const { data } = await axios.get(ENDPOINT+api_key)   //vamos a iterar uno por uno los dogs para extraer los temperaments
-        for (const r of data) {
-            if (r.temperament) { // si tiene temperamentos los agregamos a la data table temperaments
-                const dogTemps = r.temperament.split(",").map(t => t.trim())
-                for (let i = 0; i < dogTemps.length; i++) {
-                    await Temperaments.findOrCreate({
+        const { data } = await axios.get(ENDPOINT+api_key)   //extraemos el array de perros
+        for (const dog of data) {  //vamos a iterar uno por uno los dogs para extraer los temperaments de cada uno
+            if (dog.temperament) { // si tiene temperamentos los agregamos a la data table temperaments
+                const dogTemps = dog.temperament.split(",").map(t => t.trim()) // lo convertimos en array y le sacamos los espacios
+                for (let i = 0; i < dogTemps.length; i++) { // iteramos este array
+                    await Temperaments.findOrCreate({ // usamos un findorcreate para que no se repitan los mismos temperaments
                         where: { name: dogTemps[i] },
                         defaults: { name: dogTemps[i] }
                     })

@@ -9,7 +9,6 @@ async function getDogs(req, res) {
     try {
         const { data } = await axios.get(ENDPOINT+api_key)
         const dogsAPI = data.map((dog) => {  //extraemos los perros de nuestra api
-            // const temperament = dog.temperament.split(",").map((t)=> t.trim())
             return {
                 id: dog.id,
                 name: dog.name,
@@ -17,18 +16,18 @@ async function getDogs(req, res) {
                 weight: dog.weight.imperial,
                 height: dog.height.imperial,
                 age: dog.life_span,
-                temperaments: dog.temperament ? dog.temperament.split(",").map((t) => t.trim()) : null
+                temperaments: dog.temperament ? dog.temperament.split(",").map((t) => t.trim()) : null //si tiene temperamentos los separamos en un array de strings y le quitamos los espacios
             }
         })
         let dogsDB = await Dog.findAll(//extraemos los perros de nuesta DB
             {
                 include: [{
-                    model: Temperaments,
+                    model: Temperaments, // incluimos los temperamentos si es que tiene, pero solo necesitamos el atributo name
                     attributes: ["name"]
                 }]
             }
         )
-        const newDogs = []
+        const newDogs = [] //creamos un array para para almacenar cada perro de la DB con los temperamentos ordenados en un array de strings 
         for (const dog of dogsDB) {
             const { id, name, weight, height, image, age, temperaments, created } = dog
             newDogs.push({ id, name, weight, height, image, age, created, temperaments: temperaments.map(t => t.name) })
