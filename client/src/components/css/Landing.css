@@ -53,7 +53,8 @@ body {
     margin: auto;
     background-repeat: repeat;
     position: relative;
-    width: 100%
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 footer {
@@ -67,6 +68,7 @@ footer {
     width: 100%;
     color: #fff;
 }
+
 .footer-content p {
     max-width: 500px;
     margin: 10px auto;
@@ -74,6 +76,7 @@ footer {
     font-size: 2px;
     color: #cacdd2;
 }
+
 .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -81,29 +84,41 @@ footer {
     padding-bottom: 20px;
     text-align: center;
 }
+
 .footer-bottom p {
     float: left;
     font-size: 14px;
     word-spacing: 2px;
     text-transform: capitalize;
 }
+
 .footer-bottom p a {
     color: #44bae8;
     font-size: 16px;
     text-decoration: none;
 }
-.landingContainer span {
-    text-transform:initial;
+
+.spanContainer {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-around;
+    padding-bottom:20px;
+}
+
+.spanContainer span {
+    text-transform: initial;
     opacity: .6;
-    padding-bottom: 50px;
     font-weight: 200;
 }
+
 .footer-content h3 {
     font-size: 2.2rem;
     font-weight: 500;
     text-transform: capitalize;
     line-height: 3rem;
 }
+
 .footer-content {
     display: flex;
     align-items: center;

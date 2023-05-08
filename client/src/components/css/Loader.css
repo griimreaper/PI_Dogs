@@ -1,22 +1,22 @@
 .backgroundLoading {
     background-color: rgba(250, 235, 215, 0.507);
     display: flex;
-    justify-content: center;
     flex-direction: column;
     position: absolute;
     top: 0;
     width: 100%;
-    padding-bottom: 33.8%;
+    height: 972.7%;
     overflow: hidden;
 }
 
 .loadingContainer {
     background-color: rgb(53, 53, 53);
+    display: flex;
+    flex-direction: column;
     box-shadow: 0px 2px 5px red;
-    top: 0;
     width: 100%;
-    height: 230%;
     border-radius: 0px 0px 100px 100px;
+    margin-bottom: 4%;
 }
 
 .gifContainer img {
@@ -29,11 +29,10 @@
 
 .gifContainer {
     background-color: white;
-    position: absolute;
     overflow: hidden;
     width: 98%;
     border-radius: 100px;
-    margin: 1%;
+    margin: auto;
     box-shadow: 0px 0px 40px rgb(0, 0, 0);
 }
 
@@ -64,12 +63,12 @@
 .footerLoading {
     width: 100%;
     background-color: rgb(53, 53, 53);
-    position: absolute;
-    height: 80px;
+    height: 70px;
+    margin-top: auto;
     border-radius: 100px 100px 0px 0px;
     box-shadow: 0px -2px 5px red;
-    bottom: 0;
 }
+
 @keyframes animloader {
     0% {
         height: 100%;

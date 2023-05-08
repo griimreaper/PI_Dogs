@@ -65,7 +65,7 @@
 .cardContainer {
     box-sizing: border-box;
     width: 208px;
-    height: 258px;
+    height: 252px;
     background: rgba(169, 169, 169, 0.915);
     border: 3px solid white;
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);

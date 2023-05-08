@@ -13,13 +13,12 @@
     display: flex;
     justify-content: baseline;
     background-color: rgb(47, 47, 47);
-    box-shadow: 0px 0px 100px rgb(53, 53, 53);
+    box-shadow: 0px 0px 85px rgb(0, 0, 0);
     flex-direction: column;
     width: 240px;
-    border-radius: 20px;
     height: 620px;
     text-align: center;
-    padding: 60px;
+    padding: 74px;
 }
 
 .errorContainer img {
