@@ -10,12 +10,13 @@ async function getDogByName(req, res) {
         let name = req.query.name; //requerimos el name por query
         name = name.toLowerCase(); // Convertimos el string en minúsculas
 
-        let { data } = await axios.get(ENDPOINT+api_key)
-        data = data.find((d) => d.name.toLowerCase() === name) // comparamos con el name del perro en minuscula
+        let { data } = await axios.get(ENDPOINT + api_key) //extraemos los perros de la api
+        data = data.filter((d) => d.name.toLowerCase().includes(name)) // comparamos y buscamos los perros que coincidan con el name
 
-        if (data) {         //si existe lo retornamos
-            const { id, name, image, weight, height, life_span, temperament } = data
-            const dogApi = {
+        const arrayDogs = [] //creamos un array para aalmacenar los perros encontrados
+        for (const dog of data) { //iteramos la api
+            const { id, name, image, weight, height, life_span, temperament } = dog
+            arrayDogs.push({ //pusheamos los perros ordenados con los datos que queremos de cada propiedad
                 id,
                 name,
                 image: image.url,
@@ -23,19 +24,18 @@ async function getDogByName(req, res) {
                 height: height.imperial,
                 age: life_span,
                 temperament: temperament.split(",").map((t) => t.trim())
-            }
-            res.status(200).json(dogApi)
-        } else {     //si no existe lo buscamos en la BD para retornarlo
-
-            const dog = await Dog.findOne({
-                where: { name: name },
-                include: [{
-                    model: Temperaments
-                }]
             })
-            if (dog) {
+        }
+        let DB = await Dog.findAll({ // extraemos los perros de la DB
+            include: [{
+                model: Temperaments
+            }]
+        })
+        DB = DB.filter((d) => d.name.toLowerCase().includes(name)) // comparamos y buscamos los perros que coincidan con el name
+        if (DB) { // iteramos en la DB
+            for (const dog of DB) {
                 const { id, name, weight, height, image, age, temperaments } = dog
-                res.status(200).json({
+                arrayDogs.push({ // lo pusheamos a nuestro array haciendo un flat a los temperaments
                     id,
                     name,
                     weight,
@@ -44,7 +44,11 @@ async function getDogByName(req, res) {
                     age,
                     temperaments: temperaments.map(t => t.name)
                 })
-            } else res.status(400).json({ error: 'This breed of dog does not exist' })
+            }
+            if (arrayDogs.length > 0) { // si existen perros los retornamos
+                res.status(200).json(arrayDogs) 
+            }
+            else res.status(400).json({ error: 'This breed of dog does not exist' })
         }
     } catch (error) {
         res.status(500).json({ message: error.message });

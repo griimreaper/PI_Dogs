@@ -10,6 +10,7 @@ export const FILTER_CREATED = "FILTER_CREATED"
 export const NEW_DOG = "NEW_DOG"
 export const ADD_TEMPERAMENTS = "ADD_TEMPERAMENTS"
 export const FILTER_TEMPERAMENT = "FILTER_TEMPERAMENT"
+export const SEARCH_DOGS = "SEARCH_DOGS"
 
 // Manejo del paginado
 export const nextPage = () => {
@@ -40,7 +41,7 @@ export const resetDogs = () => { //mostrar todos los perros
         type: RESET_DOGS,
     }
 }
-export const newDog = (dog) => {
+export const newDog = (dog) => { // agregar perro
     const endpoint = "http://localhost:3001/dogs"
     return async (dispatch) => {
         try {
@@ -52,6 +53,12 @@ export const newDog = (dog) => {
         } catch (error) {
             console.log(error)
         }
+    }
+}
+export const searchDogs = (dogs) => { //buscar perros
+    return {
+        type: SEARCH_DOGS,
+        payload: dogs
     }
 }
 // Filtrado
@@ -75,14 +82,14 @@ export const filterCreated = (created) => { //por creado
 }
 export const filterTemperament = (temperament) => { //por temperamentos
     return {
-        type:FILTER_TEMPERAMENT,
-        payload:temperament
+        type: FILTER_TEMPERAMENT,
+        payload: temperament
     }
 }
 // action que carga los temperamentos
 export const addTemperaments = (temperaments) => {
     return {
-        type:ADD_TEMPERAMENTS,
+        type: ADD_TEMPERAMENTS,
         payload: temperaments
     }
 }

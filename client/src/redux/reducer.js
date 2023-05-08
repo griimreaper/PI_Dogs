@@ -1,4 +1,4 @@
-import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG, ADD_TEMPERAMENTS, FILTER_TEMPERAMENT } from "./actions";
+import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG, ADD_TEMPERAMENTS, FILTER_TEMPERAMENT, SEARCH_DOGS } from "./actions";
 
 const initialState = {
     numPage: 1,
@@ -25,16 +25,15 @@ const reducer = (state = initialState, { type, payload }) => {
                 numPage: state.numPage - 1
             }
         case ADD_DOGS:
-            if (Array.isArray(payload)) { // agregamos todos los perros si se recibe un array
                 return {
                     ...state,
                     dogs: [...state.dogs, ...payload],
                     dogsOrigin: [...state.dogs, ...payload],
                 }
-            }
-            return { //solo mostramos un perro si se lo busca por la searchbar
+        case SEARCH_DOGS:
+            return {
                 ...state,
-                dogs: [payload]
+                dogs: payload
             }
         case ADD_TEMPERAMENTS: // agregamos los temperamentos
             return {
@@ -44,7 +43,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case RESET_DOGS:
             return {
                 ...state,
-                dogs: [...state.dogsOrigin]
+                dogs: state.dogsOrigin
             }
         case ORDER_ALPHABETHYCALLY:
             const sortedDogs = state.dogs.sort((a, b) => {

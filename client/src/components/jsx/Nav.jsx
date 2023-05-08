@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { handleNumber } from '../../redux/actions'
 import Filter from './Filter'
 
-export default function Nav({ onSearch }) {
+export default function Nav() {
     const dispatch = useDispatch()
     const location = useLocation()
     const [showFilters, setShowFilters] = useState(false)
@@ -34,7 +34,7 @@ export default function Nav({ onSearch }) {
                 {location.pathname === "/home" && <button onClick={handlerButtonFilter}>Filter</button>}
                 {showFilters && location.pathname === "/home" ? <Filter handlerButtonFilter={handlerButtonFilter}></Filter> : null}
             </Link>
-            <Searchbar onSearch={onSearch}></Searchbar>
+            <Searchbar></Searchbar>
         </div>
     )
 }

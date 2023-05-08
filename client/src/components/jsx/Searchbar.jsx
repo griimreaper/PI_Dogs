@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { handleNumber } from '../../redux/actions'
+import { handleNumber, resetDogs, searchDogs } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 
-export default function Searchbar({ onSearch }) {
+export default function Searchbar() {
     const [name, setName] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -11,10 +12,16 @@ export default function Searchbar({ onSearch }) {
         setName(e.target.value)
     }
 
-    function submit() {
-        navigate("/home")
-        onSearch(name)
-        dispatch(handleNumber(1))
+    async function submit() { //funcion search
+        try {
+            if (name === "") {return dispatch(resetDogs())}
+            const { data } = await axios.get(`http://localhost:3001/dogsname?name=${name}`)
+            navigate("/home")
+            dispatch(searchDogs(data))
+            dispatch(handleNumber(1))
+        } catch ({ response }) {
+            alert(response.data.error)
+        }
     }
 
     function handleKeyDown(event) {

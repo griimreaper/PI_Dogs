@@ -7,7 +7,7 @@ import Detail from './components/jsx/Detail';
 import Form from './components/jsx/Form';
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addDogs, addTemperaments } from './redux/actions';
+import { addDogs, addTemperaments} from './redux/actions';
 import axios from "axios";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   const location = useLocation()
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect(() => { //al iniciar la aplicacion cargamos en nuestra store los perros y los temperaments
     axios.get("http://localhost:3001/dogs")
       .then(({ data }) => {
         dispatch(addDogs(data))
@@ -32,19 +32,9 @@ function App() {
       })
   }, [dispatch])
 
-
-  async function onSearch(name) {
-    try {
-      const { data } = await axios.get(`http://localhost:3001/dogsname?name=${name}`)
-      dispatch(addDogs(data))
-    } catch ({ response }) {
-      alert(response.data.error)
-    }
-  }
-
   return (
     <div className="App">
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
+      {location.pathname !== "/" && <Nav/>}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Cards />} />
