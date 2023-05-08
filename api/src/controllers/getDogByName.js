@@ -23,7 +23,7 @@ async function getDogByName(req, res) {
                 weight: weight.imperial,
                 height: height.imperial,
                 age: life_span,
-                temperament: temperament.split(",").map((t) => t.trim())
+                temperament: temperament?.split(",").map((t) => t.trim())
             })
         }
         let DB = await Dog.findAll({ // extraemos los perros de la DB
@@ -42,7 +42,7 @@ async function getDogByName(req, res) {
                     height,
                     image,
                     age,
-                    temperaments: temperaments.map(t => t.name)
+                    s: temperaments.map(t => t.name)
                 })
             }
             if (arrayDogs.length > 0) { // si existen perros los retornamos
