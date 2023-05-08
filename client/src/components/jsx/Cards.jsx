@@ -3,10 +3,11 @@ import Card from './Card'
 import "../css/Cards.css"
 import { useSelector, useDispatch } from 'react-redux'
 import { nextPage, prevPage } from '../../redux/actions'
+import Error from './Error'
 
 
 export default function Cards() {
-    const { numPage, dogs } = useSelector((state) => state)
+    const { numPage, dogs, temperaments } = useSelector((state) => state)
     const dispatch = useDispatch()
 
     let desde = (numPage - 1) * 8
@@ -23,29 +24,32 @@ export default function Cards() {
     }
 
     return (
-        <div className='homeContainer'>
-            <svg className={numPage > 1 ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage > 1 ? prev : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <polyline points="15 6 9 12 15 18" />
-            </svg>
-            <div className='cardGrid'>
-                {viewDogs.map((d) => {
-                    const { id, name, age, height, weight, image, temperaments } = d
-                    return (<Card key={id}
-                        id={id}
-                        name={name}
-                        age={age}
-                        temperaments={temperaments}
-                        height={height}
-                        weight={weight}
-                        image={image}
-                    />)
-                })}
+        <div>
+            {dogs.length === 0 && temperaments.length === 0 && <Error/>}
+            <div className='homeContainer'>
+                <svg className={numPage > 1 ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage > 1 ? prev : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <polyline points="15 6 9 12 15 18" />
+                </svg>
+                <div className='cardGrid'>
+                    {viewDogs.map((d) => {
+                        const { id, name, age, height, weight, image, temperaments } = d
+                        return (<Card key={id}
+                            id={id}
+                            name={name}
+                            age={age}
+                            temperaments={temperaments}
+                            height={height}
+                            weight={weight}
+                            image={image}
+                        />)
+                    })}
+                </div>
+                <svg className={numPage < cantPages ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage < cantPages ? next : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <polyline points="9 6 15 12 9 18" />
+                </svg>
             </div>
-            <svg className={numPage < cantPages ? 'buttonEnabled' : "buttonDisabled"} onClick={numPage < cantPages ? next : null} xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <polyline points="9 6 15 12 9 18" />
-            </svg>
         </div>
     )
 }

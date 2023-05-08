@@ -1,0 +1,87 @@
+.backgroundLoading {
+    background-color: rgba(250, 235, 215, 0.507);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-bottom: 33.8%;
+    overflow: hidden;
+}
+
+.loadingContainer {
+    background-color: rgb(53, 53, 53);
+    box-shadow: 0px 2px 5px red;
+    top: 0;
+    width: 100%;
+    height: 230%;
+    border-radius: 0px 0px 100px 100px;
+}
+
+.gifContainer img {
+    width: 50%;
+    border-radius: 0px 0px 0px 1000px;
+    left: -80%;
+    position: relative;
+    animation: slideIn 4s forwards infinite;
+}
+
+.gifContainer {
+    background-color: white;
+    position: absolute;
+    overflow: hidden;
+    width: 98%;
+    border-radius: 100px;
+    margin: 1%;
+    box-shadow: 0px 0px 40px rgb(0, 0, 0);
+}
+
+.loader {
+    font-size: 68px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 10px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.loader::after {
+    content: 'Loading';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(53, 53, 53);
+    text-shadow: 0 0 2px #FFF, 0 0 1px #FFF, 0 0 1px #FFF;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    animation: animloader 3s linear infinite;
+}
+
+.footerLoading {
+    width: 100%;
+    background-color: rgb(53, 53, 53);
+    position: absolute;
+    height: 80px;
+    border-radius: 100px 100px 0px 0px;
+    box-shadow: 0px -2px 5px red;
+    bottom: 0;
+}
+@keyframes animloader {
+    0% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes slideIn {
+    100% {
+        left: 80%;
+    }
+}

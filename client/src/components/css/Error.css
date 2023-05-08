@@ -1,0 +1,31 @@
+.errorContainer {
+    background-color: rgb(53, 53, 53);
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.displayError {
+    color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: baseline;
+    background-color: rgb(47, 47, 47);
+    box-shadow: 0px 0px 100px rgb(53, 53, 53);
+    flex-direction: column;
+    width: 240px;
+    border-radius: 20px;
+    height: 620px;
+    text-align: center;
+    padding: 60px;
+}
+
+.errorContainer img {
+    border-radius: 100%;
+    box-shadow: 0px 0px 85px rgb(2, 0, 0);
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 20px;
+}
