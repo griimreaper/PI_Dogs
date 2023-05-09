@@ -95,7 +95,7 @@
     display: flex;
     margin: auto;
     margin-top: 10px;
-    padding-right: 440px;
+    padding-right: 424px;
     margin-left: 40px;
     height: 7.5%;
     border-radius: 25px 0px 0px 25px;
@@ -104,10 +104,11 @@
 }
 
 .inputBox span {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .inputBox input {
