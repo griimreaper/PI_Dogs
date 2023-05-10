@@ -64,9 +64,10 @@ describe('Test de RUTAS', () => {
       await agent.get("/dogsname?name=404").expect(400);
     })
     it('Respond with an object with the properties:"name"', async () => {
-      const response = await agent.get("/dogsname?name=BARBET");
-      expect(response.body).toHaveProperty("name")
-      expect(response.body.name).toEqual('Barbet');
+      const response = await agent.get("/dogsname?name=terrier");
+      expect(response.body[0]).toHaveProperty("name")
+      expect(Array.isArray(response.body)).toBe(true);
+      expect(response.body[0].name.includes("Terrier")).toBe(true);
     })
   })
   describe("GET /temperaments", () => {
