@@ -4,7 +4,7 @@ import "../css/Landing.css"
 
 export default function Landing({ handleButtonClick }) {
     return (
-        <div class='landingContainer'>
+        <div className='landingContainer'>
             <h1>An app dedicated to that great companion who makes us happy every day</h1>
             <h2>The best friend of the human</h2>
             <Link to="/home">
@@ -16,7 +16,7 @@ export default function Landing({ handleButtonClick }) {
                     <span>I hope you enjoy it, as I enjoyed creating it</span>
                     <span>For a better experience put it in fullscreen view</span>
                 </div>
-                <div class="footer-bottom">
+                <div className="footer-bottom">
                     <p>copyright &copy;2021 <a href="https://www.linkedin.com/in/leonelbehnkedev/">Leonel Behnke</a></p>
                     <p><a href="https://www.linkedin.com/in/leonelbehnkedev/">Linkedin</a></p>
                     <p><a href="https://twitter.com/66grim6reaper66">Twitter</a></p>

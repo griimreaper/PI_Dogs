@@ -20,13 +20,13 @@ export default function Detail() {
 
     const { name, image, weight, age, height, temperaments } = dog
     return (
-        <div class="dog-detail">
-            <div class="dog-header">
+        <div className="dog-detail">
+            <div className="dog-header">
                 <h1 href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" type="text/css">{name}</h1>
             </div>
-            <div class="dog-content">
+            <div className="dog-content">
                 <img src={image} alt={name} />
-                <div class="dog-details">
+                <div className="dog-details">
                     <h2>#{dog.id}</h2>
                     <fieldset>
                     <h3>Usually put between {height} </h3>

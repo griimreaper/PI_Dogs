@@ -23,6 +23,7 @@ export default function Searchbar() {
             dispatch(handleNumber(1))
         } catch ({ response }) {
             dispatch(searchDogs([]))
+            alert(response.data.error)
         }
     }
 

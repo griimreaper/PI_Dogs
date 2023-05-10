@@ -23,7 +23,7 @@ async function getDogByName(req, res) {
                 weight: weight.imperial,
                 height: height.imperial,
                 age: life_span,
-                temperament: temperament?.split(",").map((t) => t.trim())
+                temperaments: temperament?.split(",").map((t) => t.trim())
             })
         }
         let DB = await Dog.findAll({ // extraemos los perros de la DB
@@ -42,11 +42,11 @@ async function getDogByName(req, res) {
                     height,
                     image,
                     age,
-                    s: temperaments.map(t => t.name)
+                    temperaments: temperaments.map(t => t.name)
                 })
             }
             if (arrayDogs.length > 0) { // si existen perros los retornamos
-                res.status(200).json(arrayDogs) 
+                res.status(200).json(arrayDogs.sort((a, b) => a.id - b.id)) 
             }
             else res.status(400).json({ error: 'This breed of dog does not exist' })
         }
