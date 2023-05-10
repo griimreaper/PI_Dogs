@@ -29,15 +29,15 @@ export default function Detail() {
                 <div className="dog-details">
                     <h2>#{dog.id}</h2>
                     <fieldset>
-                    <h3>Usually put between {height} </h3>
-                    <h3>He has an approximate weight of {weight} </h3>
-                    <h3>Usually lives between {age}</h3>
+                        <h3>Usually put between {height} </h3>
+                        <h3>He has an approximate weight of {weight} </h3>
+                        <h3>Usually lives between {age}</h3>
                     </fieldset>
                     {temperaments && <h3>Their tempers are</h3>}
                     <fieldset>
-                    {temperaments && temperaments.map((t, i) => {
-                        return (<p key={i}>{t}</p>)
-                    })}
+                        {temperaments && temperaments.map((t, i) => {
+                            return (<p key={i}>{t}</p>)
+                        })}
                     </fieldset>
                 </div>
             </div>

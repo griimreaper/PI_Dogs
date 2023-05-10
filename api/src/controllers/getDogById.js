@@ -21,7 +21,7 @@ async function getDogById(req, res) {
                 weight: weight.imperial,
                 height: height.imperial,
                 age: life_span,
-                temperaments: temperament.split(",").map((t) => t.trim())
+                temperaments: temperament?.split(",").map((t) => t.trim())
             }
             res.status(200).json(dogApi)
         } else {     //si no matchea lo buscamos en la BD 
@@ -42,7 +42,7 @@ async function getDogById(req, res) {
                     height,
                     image,
                     age,
-                    temperaments: temperaments.map(t => t.name)
+                    temperaments: temperaments?.map(t => t.name)
                 })
             }
             else res.status(400).json({ error: "The id of this dog does not exist" }) // si no lo encuentra respondemos con un 400
