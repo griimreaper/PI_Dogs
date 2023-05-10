@@ -1,5 +1,7 @@
 const regexUrl = /\bhttps?:\/\/\S+\.(png|jpe?g|gif|bmp)\b/;
 const regexDiff = /^(0*[1-9]|[1-9][0-9]|[12][0-9]{2}|300)\s*-\s*(0*[1-9]|[1-9][0-9]|[12][0-9]{2}|300)$/
+const regexNumber = /^[^0-9]*$/;
+
 export function validate(dogData) {
     let errors = {}
     if (!regexUrl.test(dogData.image)) {
@@ -10,6 +12,9 @@ export function validate(dogData) {
     }
     if (!dogData.name) {
         errors.name = "It cant be empty"
+    }
+    if (!regexNumber.test(dogData.name)) {
+        errors.name = "Cannot contain numbers"
     }
     if (!dogData.age) {
         errors.age = "It cant be empty"

@@ -137,11 +137,12 @@
 
 
 .inputBox p {
-    color: rgb(198, 0, 0);
-    font-size: 1rem;
+    color: rgb(255, 0, 0);
+    font-size: 0.900rem;
     position: absolute;
-    right: 11.2%;
-    width: 178px;
+    background-color: #00000020;
+    right: 10.2%;
+    width: 200px;
     white-space: wrap;
     margin: auto;
 }

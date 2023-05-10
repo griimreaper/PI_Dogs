@@ -31,7 +31,7 @@ export default function Detail() {
                     <fieldset>
                         <h3>Usually put between {height} </h3>
                         <h3>He has an approximate weight of {weight} </h3>
-                        <h3>Usually lives between {age}</h3>
+                        <h3>A life span estimated of {age}</h3>
                     </fieldset>
                     {temperaments && <h3>Their tempers are</h3>}
                     <fieldset>

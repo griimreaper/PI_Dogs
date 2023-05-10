@@ -6,7 +6,7 @@ import { nextPage, prevPage } from '../../redux/actions'
 import Error from './Error'
 
 
-export default function Cards() {
+export default function Cards({handleButtonClick}) {
     const { numPage, dogs, temperaments } = useSelector((state) => state)
     const dispatch = useDispatch()
 
@@ -42,6 +42,7 @@ export default function Cards() {
                             height={height}
                             weight={weight}
                             image={image}
+                            handleButtonClick={handleButtonClick}
                         />)
                     })}
                 </div>

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { newDog } from '../../redux/actions'
 
-export default function Form() {
+export default function Form({ handleButtonClick }) {
     const [dogData, setDogData] = useState({
         name: "",
         image: "",
@@ -36,9 +36,8 @@ export default function Form() {
 
     const handleCheckboxChange = (e) => { //manejamos los checkbox de los temperaments
         const selectedTemperament = e.target.value;
-        const isChecked = e.target.checked;
         let updatedTemperaments = [...selectedTemperaments];
-        if (isChecked) {
+        if (e.target.checked) {
             updatedTemperaments.push(selectedTemperament); // si esta chequeado lo agregamos al array de temperamentos seleccionados
         } else {
             updatedTemperaments = updatedTemperaments.filter( // si cancelamos el check hacemos un filter para extraerlo del array de los seleccionados
@@ -65,6 +64,7 @@ export default function Form() {
             if (!dogsOrigin.find((d) => d.name === dogData.name)) { //checkeamos si no existe otro perro con el mismo name
                 dispatch(newDog(dogData)) // agregamos al perro
                 alert("Dog created successfully")
+                handleButtonClick() // pantalla de carga
                 navigate("/home")
             } else { //si existe retornamos la alerta correspondiente
                 alert("This dog does exist")
@@ -100,12 +100,12 @@ export default function Form() {
                         </div>
                         <div className="inputBox">
                             <span>Height</span>
-                            <input value={dogData.height} name="height" onChange={handleChange} />
+                            <input value={dogData.height} name="height" onChange={handleChange} placeholder='xx - xx' />
                             <p>{errors.height}</p>
                         </div>
                         <div className="inputBox">
                             <span>Weight</span>
-                            <input value={dogData.weight} name="weight" onChange={handleChange} />
+                            <input value={dogData.weight} name="weight" onChange={handleChange} placeholder='xx - xx'/>
                             <p>{errors.weight}</p>
                         </div>
                         <div className="inputBox">

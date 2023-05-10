@@ -9,7 +9,7 @@ import Form from './components/jsx/Form';
 import Error from './components/jsx/Error';
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addDogs, addTemperaments} from './redux/actions';
+import { addDogs, addTemperaments } from './redux/actions';
 import axios from "axios";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
 
   const handleButtonClick = () => {
     setIsLoading(true);
-    setTimeout(() => { // establecemos el temporizador que establecerá el estado de carga en falso después de 3 segundos
+    setTimeout(() => { // establecemos el temporizador que establecerá el estado de carga en falso después de determinado tiempo
       setIsLoading(false);
     }, 3000);
   }
@@ -44,14 +44,12 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <Nav/>}
+      {location.pathname !== "/" && <Nav />}
       <Routes>
-        <Route path="/" element={<Landing handleButtonClick={handleButtonClick}/>} />
-        <Route path="/home" element={
-          isLoading ? <Loader /> : <Cards />
-        } />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/create" element={<Form />} />
+        <Route path="/" element={<Landing handleButtonClick={handleButtonClick} />} />
+        <Route path="/home" element={isLoading ? <Loader /> : <Cards handleButtonClick={handleButtonClick} />} />
+        <Route path="/detail/:id" element={isLoading? <Loader /> : <Detail />} />
+        <Route path="/create" element={<Form handleButtonClick={handleButtonClick} />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
