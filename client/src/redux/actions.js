@@ -11,6 +11,7 @@ export const NEW_DOG = "NEW_DOG"
 export const ADD_TEMPERAMENTS = "ADD_TEMPERAMENTS"
 export const FILTER_TEMPERAMENT = "FILTER_TEMPERAMENT"
 export const SEARCH_DOGS = "SEARCH_DOGS"
+export const FILTER_BREED = "FILTER_BREED"
 
 // Manejo del paginado
 export const nextPage = () => {
@@ -94,3 +95,9 @@ export const addTemperaments = (temperaments) => {
     }
 }
 
+export const filterBreed = (breed) => {
+    return {
+        type: FILTER_BREED,
+        payload:breed
+    }
+}

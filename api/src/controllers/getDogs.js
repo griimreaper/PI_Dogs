@@ -7,7 +7,7 @@ const { api_key } = process.env
 
 async function getDogs(req, res) {
     try {
-        const { data } = await axios.get(ENDPOINT+api_key)
+        const { data } = await axios.get(ENDPOINT + api_key)
         const dogsAPI = data.map((dog) => {  //extraemos los perros de nuestra api
             return {
                 id: dog.id,
@@ -15,6 +15,7 @@ async function getDogs(req, res) {
                 image: dog.image.url,
                 weight: dog.weight.imperial,
                 height: dog.height.imperial,
+                breedgroup: dog.breed_group ? dog.breed_group : null,
                 age: dog.life_span,
                 temperaments: dog.temperament ? dog.temperament.split(",").map((t) => t.trim()) : null //si tiene temperamentos los separamos en un array de strings y le quitamos los espacios
             }

@@ -1,4 +1,4 @@
-import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG, ADD_TEMPERAMENTS, FILTER_TEMPERAMENT, SEARCH_DOGS } from "./actions";
+import { PREV_PAGE, NEXT_PAGE, ADD_DOGS, HANDLE_NUMBER, RESET_DOGS, ORDER_ALPHABETHYCALLY, ORDER_WEIGHT, FILTER_CREATED, NEW_DOG, ADD_TEMPERAMENTS, FILTER_TEMPERAMENT, SEARCH_DOGS, FILTER_BREED } from "./actions";
 
 const initialState = {
     numPage: 1,
@@ -25,11 +25,11 @@ const reducer = (state = initialState, { type, payload }) => {
                 numPage: state.numPage - 1
             }
         case ADD_DOGS:
-                return {
-                    ...state,
-                    dogs: [...state.dogs, ...payload],
-                    dogsOrigin: [...state.dogs, ...payload],
-                }
+            return {
+                ...state,
+                dogs: [...state.dogs, ...payload],
+                dogsOrigin: [...state.dogs, ...payload],
+            }
         case SEARCH_DOGS:
             return {
                 ...state,
@@ -76,6 +76,12 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 dogs: sortedWDogs
+            }
+        case FILTER_BREED:
+            const filterBreed = state.dogsOrigin.filter((d) => d.breedgroup === payload)
+            return {
+                ...state,
+                dogs: filterBreed
             }
         case FILTER_CREATED:
             return {
