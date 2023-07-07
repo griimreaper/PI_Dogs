@@ -6,6 +6,7 @@ import { orderAlphabethycally, orderWeight, filterCreated, resetDogs, filterTemp
 export default function Filter({ handlerButtonFilter }) {
     const [visible, setVisible] = useState(false);
     const { dogsOrigin, temperaments } = useSelector((state) => state)
+    const breeds = Array.from(new Set(dogsOrigin.map((d) => d.breedgroup)))
     const dispatch = useDispatch()
     const styles = {
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
@@ -50,9 +51,6 @@ export default function Filter({ handlerButtonFilter }) {
         dispatch(filterBreed(e.target.value))
         dispatch(handleNumber(1))
     }
-
-    const breeds = Array.from(new Set(dogsOrigin.map((d) => d.breedgroup)))
-    console.log(breeds)
     return (
         <div style={styles} className='filterComp'>
             <button onClick={reset}>Reset</button>
