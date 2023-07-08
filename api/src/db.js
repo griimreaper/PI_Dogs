@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DP_URL
+  DB_USER, DB_PASSWORD, DB_HOST, DP_PORT, DP_URL
 } = process.env;
 
 const sequelize = new Sequelize(`${DP_URL}`,
@@ -41,5 +41,6 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   Dog,
   Temperaments,
+  DP_PORT,
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };

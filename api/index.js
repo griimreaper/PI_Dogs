@@ -18,13 +18,13 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, DP_PORT } = require('./src/db.js');
 const tempsForDatabase = require("./src/controllers/tempsForDatabase.js")
-
+const port = DP_PORT ?? 3001
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   tempsForDatabase()
-  server.listen(7612, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(port, () => {
+    console.log(`s listening at ${port}`); // eslint-disable-line no-console
   });
 });
