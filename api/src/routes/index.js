@@ -11,6 +11,7 @@ const postDog = require("../controllers/postDog")
 const router = Router();
 
 // Configurar los routers
+router.get("/", (req, res) => {res.send("hello world")})
 router.get("/dogs", getDogs)
 router.get("/dogs/:id", getDogById)
 router.get("/dogsname", getDogByName)
