@@ -7,7 +7,11 @@ const {
 } = process.env;
 
 const sequelize = new Sequelize(`${DP_URL}`,
-  { logging: false, native: false, }
+  { logging: false,
+    native: false,
+    dialect: 'postgres',
+    dialectModule: require('pg')
+  }
 );
 
 const basename = path.basename(__filename);
@@ -34,8 +38,8 @@ const { Dog, Temperaments } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Dog.belongsToMany(Temperaments, { through: "DogTemperament", timestamps: false})
-Temperaments.belongsToMany(Dog, { through: "DogTemperament", timestamps: false})
+Dog.belongsToMany(Temperaments, { through: "DogTemperament", timestamps: false })
+Temperaments.belongsToMany(Dog, { through: "DogTemperament", timestamps: false })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
