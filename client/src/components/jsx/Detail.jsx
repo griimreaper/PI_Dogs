@@ -9,7 +9,7 @@ export default function Detail() {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/dogs/${id}`) // hacemos la peticion a nuestro back con el id que llega por parametro y guardamos el resultado en nuestro estado local
+        axios.get(`https://pi-dogs-server.vercel.app/dogs/${id}`) // hacemos la peticion a nuestro back con el id que llega por parametro y guardamos el resultado en nuestro estado local
             .then(({ data }) => {
                 setDog(data)
             })

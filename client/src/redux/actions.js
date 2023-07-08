@@ -43,7 +43,7 @@ export const resetDogs = () => { //mostrar todos los perros
     }
 }
 export const newDog = (dog) => { // agregar perro
-    const endpoint = "http://localhost:3001/dogs"
+    const endpoint = "https://pi-dogs-server.vercel.app/dogs"
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, dog)

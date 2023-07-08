@@ -17,7 +17,7 @@ export default function Searchbar() {
     async function search() {
         try {
             if (name === "") { return dispatch(resetDogs()) }
-            const { data } = await axios.get(`http://localhost:3001/dogsname?name=${name}`)
+            const { data } = await axios.get(`https://pi-dogs-server.vercel.app/dogsname?name=${name}`)
             navigate("/home")
             dispatch(searchDogs(data))
             dispatch(handleNumber(1))

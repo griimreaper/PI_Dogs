@@ -18,14 +18,14 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => { //al iniciar la aplicacion cargamos en nuestra store los perros y los temperaments
-    axios.get("http://localhost:3001/dogs")
+    axios.get("https://pi-dogs-server.vercel.app/dogs")
       .then(({ data }) => {
         dispatch(addDogs(data))
       })
       .catch((error) => {
         console.log(error)
       })
-    axios.get("http://localhost:3001/temperaments")
+    axios.get("https://pi-dogs-server.vercel.app/temperaments")
       .then(({ data }) => {
         dispatch(addTemperaments(data))
       })
